@@ -12,11 +12,10 @@ function App() {
 
   return (
     <>
-      <Intro onEnvelopeOpen={() => setEnvelopeOpened(true)} />
+      {!envelopeOpened && (
+        <Intro onEnvelopeOpen={() => setEnvelopeOpened(true)} />
+      )}
 
-      {/* Mounted as soon as the guest starts opening the envelope, so its
-          galleries, textures and map embeds never compete with the intro
-          video for bandwidth on first load. */}
       {envelopeOpened && <Invitation />}
 
       <MusicToggle
