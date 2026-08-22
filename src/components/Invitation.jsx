@@ -29,6 +29,8 @@ import "swiper/css/navigation";
 // Import Swiper required modules
 import { Pagination, Mousewheel, Keyboard, Navigation } from "swiper/modules";
 
+const base = import.meta.env.BASE_URL;
+
 // ==========================================
 // Componente Canvas de Estrellas Vectoriales (Path2D)
 // ==========================================
@@ -58,17 +60,12 @@ function StarfieldCanvas() {
     // ----------------------------------------------------
     // Definición de los 3 tipos de Vectores (Path2D)
     // ----------------------------------------------------
-    // Tipo 0: Destello romántico clásico de 4 puntas
     const pathClassic = new Path2D(
       "M 0,-12 Q 0,0 12,0 Q 0,0 0,12 Q 0,0 -12,0 Q 0,0 0,-12 Z"
     );
-
-    // Tipo 1: Cruz fina/Diamante místico (rayos delgados verticales)
     const pathSlimCross = new Path2D(
       "M 0,-16 Q 0,0 4,0 Q 0,0 0,16 Q 0,0 -4,0 Q 0,0 0,-16 Z"
     );
-
-    // Tipo 2: Estrella radiante de 8 puntas (4 principales + 4 diagonales cortas)
     const pathRadiant8 = new Path2D(
       "M 0,-10 Q 0,0 10,0 Q 0,0 0,10 Q 0,0 -10,0 Q 0,0 0,-10 Z " +
         "M -4,-4 Q 0,0 4,-4 Q 0,0 4,4 Q 0,0 -4,4 Q 0,0 -4,-4 Z"
@@ -76,17 +73,16 @@ function StarfieldCanvas() {
 
     const starTypes = [pathClassic, pathSlimCross, pathRadiant8];
 
-    // Generamos las 40 estrellas con formas y rotaciones aleatorias
     const stars = Array.from({ length: 40 }).map(() => ({
       x: Math.random() * (canvas.width || 300),
       y: Math.random() * (canvas.height || 600),
-      size: Math.random() * 0.8 + 0.4, // Factor de escala para el vector
+      size: Math.random() * 0.8 + 0.4,
       phase: Math.random() * Math.PI * 2,
       speed: Math.random() * 0.008 + 0.003,
       maxOpacity: Math.random() * 0.6 + 0.35,
       color: Math.random() > 0.4 ? "#f2e8d4" : "#e0ecf8",
-      typeIndex: Math.floor(Math.random() * 3), // Selección aleatoria de los 3 tipos
-      rotation: Math.random() * Math.PI, // Angulación única para mayor variedad
+      typeIndex: Math.floor(Math.random() * 3),
+      rotation: Math.random() * Math.PI,
     }));
 
     let animationFrameId;
@@ -100,7 +96,6 @@ function StarfieldCanvas() {
         const currentOpacity =
           ((Math.sin(star.phase) + 1) / 2) * star.maxOpacity;
 
-        // Cuando se apaga, "renace" en un nuevo punto con un tipo y rotación fresca
         if (currentOpacity < 0.01 && Math.random() < 0.1) {
           star.x = Math.random() * canvas.width;
           star.y = Math.random() * canvas.height;
@@ -109,7 +104,6 @@ function StarfieldCanvas() {
         }
 
         ctx.save();
-        // Trasladamos el lienzo al centro de la estrella para rotar y escalar
         ctx.translate(star.x, star.y);
         ctx.rotate(star.rotation);
         ctx.scale(star.size, star.size);
@@ -119,9 +113,7 @@ function StarfieldCanvas() {
         ctx.shadowBlur = 8;
         ctx.shadowColor = star.color;
 
-        // Dibujamos el vector asignado
         ctx.fill(starTypes[star.typeIndex]);
-
         ctx.restore();
       });
 
@@ -153,7 +145,6 @@ function StarfieldCanvas() {
 
 const weddingDate = new Date("2026-11-21T16:00:00-06:00");
 
-// Generadores de eventos de calendario
 const eventDetails = {
   title: "Boda de Itsa & Joel 💍✨",
   description:
@@ -245,13 +236,13 @@ const couplePosts = [
       {
         id: 1,
         type: "image",
-        src: "/media/couple/couple-1.webp",
+        src: `${base}media/couple/couple-1.webp`,
         alt: "Pareja sonriendo bajo un quiosco al atardecer",
       },
       {
         id: 2,
         type: "image",
-        src: "/media/couple/couple-2.webp",
+        src: `${base}media/couple/couple-2.webp`,
         alt: "Pareja abrazada mostrando anillo de compromiso",
       },
     ],
@@ -264,19 +255,19 @@ const couplePosts = [
       {
         id: 3,
         type: "image",
-        src: "/media/couple/couple-3.webp",
+        src: `${base}media/couple/couple-3.webp`,
         alt: "Selfie de pareja frente a árbol navideño",
       },
       {
         id: 5,
         type: "image",
-        src: "/media/couple/couple-5.webp",
+        src: `${base}media/couple/couple-5.webp`,
         alt: "Selfie nocturno frente a estructura navideña",
       },
       {
         id: 6,
         type: "image",
-        src: "/media/couple/couple-6.webp",
+        src: `${base}media/couple/couple-6.webp`,
         alt: "Selfie de cerca con luces al fondo",
       },
     ],
@@ -289,25 +280,25 @@ const couplePosts = [
       {
         id: 4,
         type: "image",
-        src: "/media/couple/couple-4.webp",
+        src: `${base}media/couple/couple-4.webp`,
         alt: "Pareja vestida elegante en recepción",
       },
       {
         id: 7,
         type: "image",
-        src: "/media/couple/couple-7.webp",
+        src: `${base}media/couple/couple-7.webp`,
         alt: "Selfie espontáneo sonriendo alegremente",
       },
       {
         id: 8,
         type: "image",
-        src: "/media/couple/couple-8.webp",
+        src: `${base}media/couple/couple-8.webp`,
         alt: "Pareja recostada en hamaca multicolor",
       },
       {
         id: 9,
         type: "image",
-        src: "/media/couple/couple-9.webp",
+        src: `${base}media/couple/couple-9.webp`,
         alt: "Pareja abrazada en noche de fiesta",
       },
     ],
@@ -317,22 +308,22 @@ const couplePosts = [
 const dressCodeGallery = [
   {
     id: 1,
-    src: "/media/dress-code/dress-1.webp",
+    src: `${base}media/dress-code/dress-1.webp`,
     alt: "Referencia de vestimenta masculina 1",
   },
   {
     id: 2,
-    src: "/media/dress-code/dress-2.webp",
+    src: `${base}media/dress-code/dress-2.webp`,
     alt: "Referencia de vestimenta femenina 1",
   },
   {
     id: 3,
-    src: "/media/dress-code/dress-3.webp",
+    src: `${base}media/dress-code/dress-3.webp`,
     alt: "Referencia de vestimenta masculina 2",
   },
   {
     id: 4,
-    src: "/media/dress-code/dress-4.webp",
+    src: `${base}media/dress-code/dress-4.webp`,
     alt: "Referencia de vestimenta femenina 2",
   },
 ];
@@ -760,7 +751,7 @@ export function Invitation() {
             <article className="poetry-card moon-card">
               <div className="poetry-image-wrapper">
                 <img
-                  src="/media/site/Luna.png"
+                  src={`${base}media/site/Luna.png`}
                   alt="Ilustración de la Luna"
                   className="poetry-illustration"
                 />
@@ -834,7 +825,7 @@ export function Invitation() {
             <article className="poetry-card sun-card">
               <div className="poetry-image-wrapper">
                 <img
-                  src="/media/site/Sol.png"
+                  src={`${base}media/site/Sol.png`}
                   alt="Ilustración del Sol"
                   className="poetry-illustration"
                 />
@@ -1109,7 +1100,7 @@ export function Invitation() {
         {/* Cita Destacada */}
         <section
           className="quote-section"
-          style={{ backgroundImage: `url(/media/site/reception.webp)` }}
+          style={{ backgroundImage: `url(${base}media/site/reception.webp)` }}
         >
           <div>
             <p>“De la suerte de encontrarnos a la fortuna de tenernos.”</p>
@@ -1297,7 +1288,7 @@ export function Invitation() {
       <footer>
         <div className="ornament">
           <img
-            src="/media/site/rings-ornament.webp"
+            src={`${base}media/site/rings-ornament.webp`}
             width={88}
             height="auto"
             loading="lazy"

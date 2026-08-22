@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 
-import heroWedding from "/media/site/hero-wedding.webp";
-
 const base = import.meta.env.BASE_URL;
-const weddingLogo = `${base}img/wedding-logo.webp`;
-const invitationCover = `${base}img/invitation-cover.webp`;
-const invitationOpening = `${base}vid/invitation-opening.mp4`;
+// Nos aseguramos de quitar cualquier doble barra diagonal por seguridad
+const cleanBase = base.endsWith('/') ? base : `${base}/`;
+
+const heroWedding = `${cleanBase}media/site/hero-wedding.webp`;
+const weddingLogo = `${cleanBase}img/wedding-logo.webp`;
+const invitationCover = `${cleanBase}img/invitation-cover.webp`;
+const invitationOpening = `${cleanBase}vid/invitation-opening.mp4`;
 
 /**
  * Envelope-opening sequence and hero header. Mounted immediately so a guest
