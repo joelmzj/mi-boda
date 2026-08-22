@@ -11,6 +11,7 @@ import {
   Sparkles,
   Search,
   MessageCircle,
+  ChevronDown,
 } from "lucide-react";
 import { PhotoComments } from "./PhotoComments";
 import {
@@ -30,6 +31,8 @@ import "swiper/css/navigation";
 import { Pagination, Mousewheel, Keyboard, Navigation } from "swiper/modules";
 
 const base = import.meta.env.BASE_URL;
+const heroWedding = `${base}media/site/hero-wedding.webp`;
+const weddingLogo = `${base}img/wedding-logo.webp`;
 
 // ==========================================
 // Componente Canvas de Estrellas Vectoriales (Path2D)
@@ -57,9 +60,6 @@ function StarfieldCanvas() {
     });
     resizeObserver.observe(canvas.parentElement);
 
-    // ----------------------------------------------------
-    // Definición de los 3 tipos de Vectores (Path2D)
-    // ----------------------------------------------------
     const pathClassic = new Path2D(
       "M 0,-12 Q 0,0 12,0 Q 0,0 0,12 Q 0,0 -12,0 Q 0,0 0,-12 Z"
     );
@@ -649,6 +649,33 @@ export function Invitation() {
           ✉️ Outlook / Office 365
         </a>
       </div>
+
+      {/* Cabecera Principal (Hero con foto de fondo, nombres y botones superiores) */}
+      <header className="hero" id="inicio" style={{ backgroundImage: `url(${heroWedding})` }}>
+        <nav className="navbar">
+          <a className="brand" href="#inicio">
+            <img src={weddingLogo} width={40} height={40} alt="Volver al inicio" />
+          </a>
+          <div className="nav-links">
+            <a href="#detalles">El gran día</a>
+            <a href="#contacto">Confirma tu asistencia</a>
+            <a href="#muro-deseos">Muro de deseos</a>
+          </div>
+        </nav>
+        <div className="hero-overlay" />
+        <div className="hero-content">
+          <h1><em className="couple-title">
+            <span>Itsahian</span>
+            <span><small className="conjunction">&</small></span>
+            <span>Joel</span>
+          </em></h1>
+          <p className="hero-date">21 · 11 · 2026</p>
+          <a className="outline-button" href="#bienvenida">Descubre los detalles</a>
+        </div>
+        <a className="scroll-hint" href="#bienvenida" aria-label="Continuar">
+          <b><ChevronDown aria-hidden="true" /></b>
+        </a>
+      </header>
 
       <main>
         {/* Galería Mosaico con Badges Enriquecidos */}

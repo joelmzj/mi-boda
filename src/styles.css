@@ -1058,22 +1058,77 @@ footer .ornament {
     right: 6px;
     padding: 4px;
   }
+}
 
-  .floating-save-date-btn {
-    bottom: 16px;
-    left: 16px;
-    padding: 10px 16px;
-    font-size: 10px;
-    z-index: 30;
-  }
+/* ==========================================
+   Popover de Selección de Calendarios
+   ========================================== */
 
-  .calendar-popover {
-    bottom: 70px;
-    left: 16px;
-    right: 16px;
-    min-width: auto;
-    z-index: 35;
-  }
+.calendar-popover {
+  position: fixed;
+  bottom: 130px;
+  left: 24px;
+  background: #ffffff;
+  border: 1px solid rgba(169, 139, 84, 0.4);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 10000;
+  min-width: 230px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.calendar-popover.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.popover-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+}
+
+.popover-header span {
+  font-size: 11px;
+  font-weight: 600;
+  color: #80652e;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.calendar-popover a,
+.calendar-popover button {
+  background: rgba(128, 101, 46, 0.05);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #534838;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.calendar-popover a:hover,
+.calendar-popover button:hover {
+  background: rgba(128, 101, 46, 0.12);
+  border-color: rgba(169, 139, 84, 0.3);
+  color: #80652e;
 }
 
 @media (max-height: 460px) {
@@ -1659,45 +1714,6 @@ footer .ornament {
 }
 
 /* ==========================================
-   Botón Flotante Dinámico "Guarda la Fecha"
-   ========================================== */
-
-.floating-save-date-btn {
-  position: fixed;
-  bottom: 22px;
-  left: 22px;
-  background: #80652e;
-  color: #ffffff;
-  padding: 12px 20px;
-  border-radius: 30px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
-  z-index: 15;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px);
-  transition: opacity 0.4s ease, transform 0.4s ease, background 0.2s ease;
-}
-
-.floating-save-date-btn.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.floating-save-date-btn:hover {
-  background: #625237;
-  color: #ffffff;
-  transform: translateY(-2px);
-}
-
-/* ==========================================
    Badges de Conteo para Grid Instagram
    ========================================== */
 
@@ -1725,77 +1741,6 @@ footer .ornament {
 
 .calendar-add-btn:hover {
   background: rgba(128, 101, 46, 0.2);
-}
-
-/* ==========================================
-   Popover de Selección de Calendarios
-   ========================================== */
-
-.calendar-popover {
-  position: fixed;
-  bottom: 80px;
-  left: 22px;
-  background: #ffffff;
-  border: 1px solid rgba(169, 139, 84, 0.4);
-  border-radius: 12px;
-  padding: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 25;
-  min-width: 230px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-.calendar-popover.is-active {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.popover-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #f0f0f0;
-  padding-bottom: 6px;
-  margin-bottom: 4px;
-}
-
-.popover-header span {
-  font-size: 11px;
-  font-weight: 600;
-  color: #80652e;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.calendar-popover a,
-.calendar-popover button {
-  background: rgba(128, 101, 46, 0.05);
-  border: 1px solid transparent;
-  border-radius: 8px;
-  padding: 10px 12px;
-  font-size: 13px;
-  color: #534838;
-  text-align: left;
-  cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-}
-
-.calendar-popover a:hover,
-.calendar-popover button:hover {
-  background: rgba(128, 101, 46, 0.12);
-  border-color: rgba(169, 139, 84, 0.3);
-  color: #80652e;
 }
 
 /* ==========================================
@@ -2537,31 +2482,60 @@ footer .ornament {
 /* Botón superior: Guarda la fecha */
 .floating-save-date-btn {
   position: fixed !important;
-  bottom: 72px !important; /* Ubicado arriba */
+  bottom: 72px !important;
   left: 24px !important;
   right: auto !important;
   z-index: 999 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background-color: #80652e !important;
+  color: #ffffff !important;
+  padding: 10px 18px !important;
+  border-radius: 50px !important;
+  border: none !important;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
+}
+
+.floating-save-date-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.floating-save-date-btn:hover {
+  background-color: #625237 !important;
+  transform: translateY(-2px);
 }
 
 /* Botón inferior: Confirmar asistencia (WhatsApp) */
 .floating-whatsapp-btn {
   position: fixed !important;
-  bottom: 20px !important; /* Ubicado abajo */
+  bottom: 20px !important;
   left: 24px !important;
   right: auto !important;
   z-index: 999 !important;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background-color: #878b88;
-  color: #ffffff;
-  padding: 10px 18px;
-  border-radius: 50px;
-  font-family: "Montserrat", sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  text-decoration: none;
-  box-shadow: 0 4px 12px rgba(181, 177, 177, 0.2);
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background-color: #536548 !important;
+  color: #ffffff !important;
+  padding: 10px 18px !important;
+  border-radius: 50px !important;
+  border: none !important;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
   opacity: 0;
   visibility: hidden;
   transform: translateY(20px);
@@ -2575,7 +2549,7 @@ footer .ornament {
 }
 
 .floating-whatsapp-btn:hover {
-  background-color: #292d2b;
+  background-color: #405137 !important;
   transform: translateY(-2px);
 }
 
@@ -2584,13 +2558,13 @@ footer .ornament {
   .floating-save-date-btn {
     bottom: 64px !important;
     left: 16px !important;
-    padding: 7px 12px;
-    font-size: 11px;
+    padding: 7px 14px !important;
+    font-size: 11px !important;
   }
   .floating-whatsapp-btn {
     bottom: 16px !important;
     left: 16px !important;
-    padding: 7px 12px;
-    font-size: 11px;
+    padding: 7px 14px !important;
+    font-size: 11px !important;
   }
 }
