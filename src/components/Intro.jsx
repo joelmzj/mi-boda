@@ -3,9 +3,10 @@ import { ChevronDown } from "lucide-react";
 
 import heroWedding from "/media/site/hero-wedding.webp";
 
-const weddingLogo = "/img/wedding-logo.webp";
-const invitationCover = "/img/invitation-cover.webp";
-const invitationOpening = "/vid/invitation-opening.mp4";
+const base = import.meta.env.BASE_URL;
+const weddingLogo = `${base}img/wedding-logo.webp`;
+const invitationCover = `${base}img/invitation-cover.webp`;
+const invitationOpening = `${base}vid/invitation-opening.mp4`;
 
 /**
  * Envelope-opening sequence and hero header. Mounted immediately so a guest
@@ -115,31 +116,34 @@ export function Intro({ onEnvelopeOpen }) {
         {!envelopeOpening && <p className="intro-hint">Toca para abrir</p>}
       </section>
 
-      <header className="hero" id="inicio" style={{ backgroundImage: `url(${heroWedding})` }}>
-        <nav className="navbar">
-          <a className="brand" href="#inicio">
-            <img src={weddingLogo} width={40} height={40} alt="Volver al inicio" />
-          </a>
-          <div className="nav-links">
-            <a href="#detalles">El gran día</a>
-            <a href="#contacto">Confirma tu asistencia</a>
-            <a href="#muro-deseos">Muro de deseos</a>
+      {/* El hero de la invitación solo aparece una vez que se abre el sobre */}
+      {invitationOpen && (
+        <header className="hero" id="inicio" style={{ backgroundImage: `url(${heroWedding})` }}>
+          <nav className="navbar">
+            <a className="brand" href="#inicio">
+              <img src={weddingLogo} width={40} height={40} alt="Volver al inicio" />
+            </a>
+            <div className="nav-links">
+              <a href="#detalles">El gran día</a>
+              <a href="#contacto">Confirma tu asistencia</a>
+              <a href="#muro-deseos">Muro de deseos</a>
+            </div>
+          </nav>
+          <div className="hero-overlay" />
+          <div className="hero-content">
+            <h1><em className="couple-title">
+              <span>Itsahian</span>
+              <span><small className="conjunction">&</small></span>
+              <span>Joel</span>
+            </em></h1>
+            <p className="hero-date">21 · 11 · 2026</p>
+            <a className="outline-button" href="#bienvenida">Descubre los detalles</a>
           </div>
-        </nav>
-        <div className="hero-overlay" />
-        <div className="hero-content">
-          <h1><em className="couple-title">
-            <span>Itsahian</span>
-            <span><small className="conjunction">&</small></span>
-            <span>Joel</span>
-          </em></h1>
-          <p className="hero-date">21 · 11 · 2026</p>
-          <a className="outline-button" href="#bienvenida">Descubre los detalles</a>
-        </div>
-        <a className="scroll-hint" href="#bienvenida" aria-label="Continuar">
-          <b><ChevronDown aria-hidden="true" /></b>
-        </a>
-      </header>
+          <a className="scroll-hint" href="#bienvenida" aria-label="Continuar">
+            <b><ChevronDown aria-hidden="true" /></b>
+          </a>
+        </header>
+      )}
     </>
   );
 }
