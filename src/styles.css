@@ -1,0 +1,2596 @@
+/* Google Fonts are loaded via <link> in index.html (not @import here) so the
+   browser can discover and fetch them without waiting for this stylesheet. */
+@import "tailwindcss";
+
+:root {
+  color: #534838;
+  background: #f7f3eb;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100dvw;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100dvh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body.invitation-locked {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+.invitation-cover {
+  align-items: center;
+  background: #efe7d8;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  position: fixed;
+  transition: opacity .8s ease, visibility .8s ease;
+  z-index: 20;
+}
+
+.invitation-cover.is-open {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.intro-media {
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+}
+
+.intro-poster {
+  opacity: 1;
+  transition: opacity .08s ease;
+  z-index: 2;
+}
+
+.intro-poster.hidden {
+  opacity: 0;
+}
+
+.intro-video {
+  opacity: 0;
+  transition: opacity .08s ease;
+  z-index: 1;
+}
+
+.intro-video.visible {
+  opacity: 1;
+}
+
+.intro-hint {
+  background: rgba(255, 255, 255, .82);
+  bottom: 32px;
+  color: #80652e;
+  font-size: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  left: 50%;
+  letter-spacing: 2px;
+  margin: 0;
+  padding: 12px 17px;
+  position: absolute;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  z-index: 3;
+}
+
+.light-paper-section {
+  background-image: url("/img/antiquewhite-texture.webp");
+  background-position: center;
+  background-size: cover;
+}
+
+.dark-paper-section {
+  background-image: url("/img/beige-texture.webp");
+  background-position: center;
+  background-size: cover;
+}
+
+.hero {
+  align-items: flex-end;
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  display: flex;
+  min-height: 100svh;
+  padding: 30px clamp(22px, 7vw, 100px) 50px;
+  position: relative;
+}
+
+.hero-overlay {
+  background: linear-gradient(180deg, rgba(27, 31, 22, .5), rgba(31, 35, 24, .2) 48%, rgba(27, 31, 22, .65));
+  inset: 0;
+  position: absolute;
+}
+
+.navbar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  left: clamp(24px, 7vw, 50px);
+  position: absolute;
+  right: clamp(24px, 7vw, 50px);
+  top: 28px;
+  z-index: 2;
+}
+
+.brand {
+  opacity: 0.8;
+  transition: 0.6s ease;
+}
+
+.brand:hover {
+  opacity: 1;
+  transition: 0.6s ease;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a,
+.kicker,
+.outline-button,
+footer span {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+}
+
+.nav-links a {
+  font-weight: bolder;
+  transition: 0.4s ease;
+}
+
+.nav-links a:hover {
+  padding-top: 8px;
+  transition: 0.4s ease;
+}
+
+.hero-content {
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+
+.kicker {
+  color: #a98b54;
+  margin: 0 0 16px;
+}
+
+.kicker.light {
+  color: #ead8ad;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+}
+
+h1 {
+  font-size: clamp(72px, 14vw, 120px);
+  line-height: .78;
+  margin: 0;
+  text-shadow: 0 5px 20px rgba(0, 0, 0, .18);
+}
+
+h1 em,
+footer em {
+  color: #fff;
+  font-family: "Imperial Script", cursive;
+  font-weight: 400;
+}
+
+.couple-title {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.couple-title small {
+  font-size: clamp(40px, 12vw, 64px);
+}
+
+.hero-date {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 25px;
+  letter-spacing: 8px;
+  margin: 32px 0 36px;
+}
+
+.outline-button {
+  border: 1px solid rgba(255, 255, 255, .72);
+  display: inline-block;
+  padding: 15px 22px;
+  transition: .35s ease;
+}
+
+.outline-button:hover {
+  background: #fff;
+  color: #625237;
+}
+
+.scroll-hint {
+  bottom: 24px;
+  opacity: 0.6;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  transform: translateX(-50%);
+  z-index: 2;
+  transition: 0.4s ease;
+}
+
+.scroll-hint:hover {
+  bottom: 18px;
+  transition: 0.4s ease;
+}
+
+.scroll-hint svg {
+  color: #fff;
+  width: 20px;
+}
+
+.schedule-section,
+.gallery-section,
+.details-section,
+.gift-section {
+  padding: 96px clamp(24px, 8vw, 120px);
+}
+
+h2 {
+  color: #80652e;
+  font-size: clamp(48px, 8vw, 80px);
+  line-height: .85;
+  margin: 0;
+}
+
+.lead {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 22px;
+  line-height: 1.55;
+  margin: auto;
+  max-width: 710px;
+  padding-top: 32px;
+}
+
+.signature {
+  color: #80652e;
+  font-family: "Imperial Script", cursive;
+  font-size: 45px;
+  margin: 34px 0 0;
+}
+
+.countdown-section,
+.rsvp-section {
+  background-image: url("/img/light-green-texture.webp");
+  background-position: top;
+  background-size: cover;
+  color: #fff;
+  padding: 86px 24px;
+  text-align: center;
+}
+
+.countdown-section h2,
+.rsvp-section h2 {
+  color: #f2e8d4;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  margin: 45px auto 0;
+  max-width: 760px;
+}
+
+.countdown-item {
+  border-right: 1px solid rgba(234, 216, 173, .35);
+  min-width: 140px;
+  padding: 0 24px;
+}
+
+.countdown-item:last-child {
+  border: 0;
+}
+
+.countdown strong {
+  color: #dfc286;
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 62px;
+  font-weight: 500;
+  line-height: .8;
+}
+
+.countdown span {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin-top: 16px;
+  text-transform: uppercase;
+}
+
+.details-section {
+  text-align: center;
+}
+
+.details-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 56px auto 0;
+  max-width: 1080px;
+}
+
+.details-grid article,
+.gift-card {
+  background: rgba(255, 255, 255, .46);
+  border: 1px solid rgba(183, 163, 117, .42);
+  padding: 34px 22px;
+}
+
+h3 {
+  color: #80652e;
+  font-size: 34px;
+  margin: 0 0 9px;
+}
+
+.details-grid p,
+.gift-card p,
+.schedule-section p:not(.kicker) {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 19px;
+  line-height: 1.45;
+}
+
+.details-grid small,
+.details-grid a {
+  color: #80652e;
+  display: block;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  margin-top: 15px;
+  text-transform: uppercase;
+}
+
+.details-grid a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.schedule-section {
+  text-align: center;
+}
+
+.gallery-section {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ==========================================
+   Contenedor y Flechas Personalizadas de Swiper
+   ========================================== */
+
+.swiper-wrapper-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 48px auto 0;
+  display: flex;
+  align-items: center;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  margin-top: 0;
+  max-width: 816px;
+  border-radius: 10px;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 10px;
+  aspect-ratio: 3 / 4;
+  height: 200px;
+  width: auto;
+}
+
+.swiper-slide:active {
+  cursor: grabbing;
+}
+
+.swiper-slide img {
+  display: block;
+  object-fit: cover;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  transition: transform .6s ease;
+}
+
+.swiper-slide:hover img {
+  transform: scale(0.95);
+  transition: transform .6s ease;
+}
+
+.swiper-pagination {
+  position: static;
+  margin-top: 12px;
+}
+
+.swiper-pagination-bullet-active {
+  background: #00000099;
+}
+
+.swiper-button-prev-custom,
+.swiper-button-next-custom {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(250, 246, 237, 0.92);
+  border: 1px solid rgba(169, 139, 84, 0.5);
+  color: #80652e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.3s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.swiper-button-prev-custom {
+  left: -20px;
+}
+
+.swiper-button-next-custom {
+  right: -20px;
+}
+
+.swiper-button-prev-custom:hover,
+.swiper-button-next-custom:hover {
+  background: #ffffff;
+  transform: translateY(-50%) scale(1.08);
+  color: #534838;
+}
+
+.swiper-button-disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ==========================================
+   Grid Mosaico Perfil Instagram (3 Columnas)
+   ========================================== */
+
+.instagram-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 820px;
+  margin: 40px auto 0;
+}
+
+.instagram-grid-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #000000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.grid-media-item {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.instagram-grid-item:hover .grid-media-item {
+  transform: scale(1.06);
+}
+
+.grid-item-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 5px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  backdrop-filter: blur(2px);
+}
+
+.grid-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+}
+
+.instagram-grid-item:hover .grid-item-overlay {
+  opacity: 1;
+}
+
+.overlay-caption {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 16px;
+  font-style: italic;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* ==========================================
+   Swiper & Imagen dentro del Modal Instagram
+   ========================================== */
+
+.modal-swiper-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+}
+
+.modal-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.modal-swiper .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background: #000000;
+  border-radius: 0;
+}
+
+.instagram-image-container .instagram-image,
+.modal-swiper .instagram-image {
+  max-width: 100%;
+  max-height: 75vh;
+  width: auto;
+  height: auto;
+  object-fit: contain !important;
+  margin: auto;
+}
+
+.modal-swiper-wrapper .modal-prev {
+  left: 12px;
+}
+
+.modal-swiper-wrapper .modal-next {
+  right: 12px;
+}
+
+/* ==========================================
+   Mapas & Secciones Generales
+   ========================================== */
+
+.map-section {
+  display: grid;
+  grid-template-columns: minmax(280px, .78fr) minmax(440px, 1.22fr);
+}
+
+.map-copy {
+  align-self: center;
+  padding: 72px clamp(28px, 7vw, 100px);
+}
+
+.map-copy>p:not(.kicker) {
+  color: #80652e;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 27px;
+  margin: 8px 0;
+}
+
+.map-copy span {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 19px;
+  line-height: 1.45;
+  max-width: 390px;
+}
+
+.map-link,
+.contact-link {
+  border: 1px solid #80652e;
+  color: #80652e;
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  margin-top: 24px;
+  padding: 13px 16px;
+  text-transform: uppercase;
+  transition: .3s ease;
+}
+
+.map-link:hover,
+.contact-link:hover {
+  background: #80652e;
+  color: #fff;
+}
+
+.map-section iframe {
+  border: 0;
+  min-height: 470px;
+  width: 100%;
+}
+
+.quote-section {
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  min-height: 432px;
+  padding: 48px;
+  position: relative;
+}
+
+.quote-section::before {
+  background: rgba(31, 39, 29, .57);
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.quote-section div {
+  color: #fff;
+  left: 50%;
+  max-width: 720px;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 48px);
+}
+
+.quote-section p {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(30px, 4.5vw, 50px);
+  font-style: italic;
+  line-height: 1.1;
+  margin: 0 0 20px;
+}
+
+.quote-section span {
+  color: #ead8ad;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.gift-section {
+  text-align: center;
+}
+
+.gift-card {
+  margin: 42px auto 0;
+  max-width: 390px;
+}
+
+.rsvp-intro p {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 21px;
+  margin: 18px auto 28px;
+}
+
+.rsvp-form {
+  background: rgba(250, 246, 237, .98);
+  border: 1px solid rgba(223, 194, 134, .72);
+  color: #534838;
+  margin: 38px auto 0;
+  max-width: 760px;
+  padding: 32px;
+  text-align: left;
+}
+
+.form-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.form-grid label {
+  color: #80652e;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.form-grid input,
+.form-grid textarea {
+  background: rgba(255, 255, 255, .72);
+  border: 1px solid #d8c69c;
+  border-radius: 0;
+  color: #534838;
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 16px;
+  letter-spacing: normal;
+  margin-top: 8px;
+  outline: none;
+  padding: 11px 12px;
+  resize: vertical;
+  transition: border .25s ease, box-shadow .25s ease;
+  width: 100%;
+}
+
+.form-grid input:focus,
+.form-grid textarea:focus {
+  border-color: #80652e;
+  box-shadow: 0 0 0 2px rgba(169, 139, 84, .16);
+}
+
+.form-full {
+  grid-column: 1 / -1;
+}
+
+.submit-button {
+  background: #536548;
+  border: 1px solid #536548;
+  color: #fff;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-top: 25px;
+  padding: 15px 22px;
+  text-transform: uppercase;
+  transition: .3s ease;
+}
+
+.submit-button:hover {
+  background: #405137;
+}
+
+.submit-button:disabled {
+  cursor: wait;
+  opacity: .65;
+}
+
+.form-error {
+  color: #9a3f37;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  margin: 18px 0 0;
+}
+
+footer {
+  background-image: url("/img/dark-green-texture.webp");
+  background-position: top;
+  background-size: cover;
+  color: #fff;
+  padding: 48px 24px 90px;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+footer .signature {
+  color: #f2e8d4;
+  margin: 0 0 6px;
+}
+
+footer .ornament {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0 16px;
+  opacity: 0.8;
+}
+
+.footer-dedication {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 20px;
+  font-style: italic;
+  color: #f2e8d4;
+  margin: 6px 0 14px;
+  opacity: 0.95;
+  letter-spacing: 0.5px;
+}
+
+.music-toggle {
+  align-items: center;
+  background: #4E6448;
+  border: none;
+  border-radius: 50%;
+  bottom: 22px;
+  color: #f2e8d4;
+  cursor: pointer;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  padding: 0;
+  position: fixed;
+  right: 22px;
+  transition: transform .3s ease, background .3s ease, box-shadow .3s ease;
+  width: 50px;
+  z-index: 15;
+  box-shadow: 0 6px 18px rgba(45, 57, 41, .28);
+}
+
+.music-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.music-toggle:hover {
+  background: #57694e;
+  transform: scale(1.06);
+}
+
+.music-toggle.is-playing {
+  animation: music-pulse 2.4s ease-out infinite;
+}
+
+@keyframes music-pulse {
+  0% {
+    box-shadow: 0 6px 18px rgba(45, 57, 41, .28), 0 0 0 0 rgba(169, 139, 84, .5);
+  }
+
+  70% {
+    box-shadow: 0 6px 18px rgba(45, 57, 41, .28), 0 0 0 12px rgba(169, 139, 84, 0);
+  }
+
+  100% {
+    box-shadow: 0 6px 18px rgba(45, 57, 41, .28), 0 0 0 0 rgba(169, 139, 84, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .music-toggle.is-playing,
+  .guestbook-card {
+    animation: none !important;
+  }
+
+  .invitation-cover,
+  .intro-poster,
+  .intro-video,
+  .brand,
+  .nav-links a,
+  .scroll-hint,
+  .outline-button,
+  .swiper-slide img,
+  .map-link,
+  .contact-link,
+  .submit-button {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 960px) {
+  .couple-title {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .couple-title small {
+    position: relative;
+    font-size: clamp(40px, 11vw, 56px);
+    bottom: 2vw;
+  }
+
+  .quote-section {
+    background-attachment: scroll;
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 720px) {
+  .navbar {
+    justify-content: center;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .couple-title small {
+    font-size: clamp(40px, 11vw, 48px);
+  }
+
+  .schedule-section,
+  .gallery-section,
+  .gift-section {
+    padding: 86px 24px;
+  }
+
+  .countdown-item {
+    min-width: 0;
+    padding: 0 13px;
+    width: 25%;
+  }
+
+  .countdown strong {
+    font-size: 43px;
+  }
+
+  .countdown span {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .details-section {
+    padding: 86px 24px;
+  }
+
+  .map-section {
+    grid-template-columns: 1fr;
+  }
+
+  .map-copy {
+    padding: 72px 24px 40px;
+    text-align: center;
+  }
+
+  .map-copy span {
+    margin: auto;
+  }
+
+  .map-section iframe {
+    min-height: 350px;
+  }
+
+  .rsvp-form {
+    padding: 22px 18px;
+  }
+
+  .rsvp-section {
+    padding-bottom: 72px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-full {
+    grid-column: auto;
+  }
+
+  .music-toggle {
+    bottom: 16px;
+    right: 16px;
+    height: 46px;
+    width: 46px;
+  }
+
+  footer {
+    padding: 48px 24px 100px;
+  }
+}
+
+@media (max-width: 639px) {
+  .swiper-button-prev-custom {
+    left: 4px;
+  }
+  .swiper-button-next-custom {
+    right: 4px;
+  }
+
+  .instagram-grid-container {
+    gap: 6px;
+  }
+
+  .grid-item-badge {
+    top: 6px;
+    right: 6px;
+    padding: 4px;
+  }
+
+  .floating-save-date-btn {
+    bottom: 16px;
+    left: 16px;
+    padding: 10px 16px;
+    font-size: 10px;
+    z-index: 30;
+  }
+
+  .calendar-popover {
+    bottom: 70px;
+    left: 16px;
+    right: 16px;
+    min-width: auto;
+    z-index: 35;
+  }
+}
+
+@media (max-height: 460px) {
+  h1 {
+    font-size: clamp(72px, 12vw, 76px);
+  }
+
+  .hero-content {
+    padding-bottom: 24px;
+  }
+
+  .couple-title {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .couple-title small {
+    font-size: 40px;
+    bottom: 0;
+  }
+
+  .hero-date {
+    margin: 8px 0 20px;
+  }
+}
+
+/* ==========================================
+   Estructura Base Modal de Imagen & Tarjeta Instagram
+   ========================================== */
+
+.image-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.88);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.image-modal-close-button {
+  position: absolute;
+  top: -42px;
+  right: 0;
+  background: none;
+  border: none;
+  color: #f2e8d4;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.image-modal-close-button:hover {
+  color: #ffffff;
+  transform: scale(1.15);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.gallery-hint {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 18px;
+  font-style: italic;
+  color: #80652e;
+  margin: 12px 0 0;
+  opacity: 0.85;
+}
+
+.instagram-card {
+  background: #ffffff;
+  border-radius: 12px;
+  max-width: 850px;
+  width: 92vw;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  cursor: default;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.instagram-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  background: #ffffff;
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+.instagram-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.instagram-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a98b54, #80652e);
+  color: #ffffff;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: bold;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.instagram-user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.instagram-user-info .username {
+  font-size: 13px;
+  font-weight: 600;
+  color: #262626;
+  line-height: 1.2;
+}
+
+.instagram-user-info .location {
+  font-size: 11px;
+  color: #8e8e8e;
+}
+
+.instagram-close-button {
+  background: none;
+  border: none;
+  color: #262626;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+.instagram-close-button:hover {
+  opacity: 0.6;
+}
+
+.instagram-image-container {
+  width: 100%;
+  background: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.fullscreen-hint {
+  display: block;
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(20, 20, 20, 0.78);
+  color: #f2e8d4;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 14px;
+  font-style: italic;
+  letter-spacing: 0.5px;
+  padding: 6px 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(223, 194, 134, 0.35);
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.fullscreen-hint.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.photo-preview-hint {
+  bottom: 14px;
+}
+
+.instagram-footer {
+  padding: 14px 16px;
+  background: #ffffff;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.instagram-caption {
+  font-size: 13px;
+  color: #262626;
+  margin: 0 0 8px;
+  line-height: 1.4;
+  font-family: "Montserrat", sans-serif;
+}
+
+.instagram-caption .username {
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+.instagram-date {
+  font-size: 10px;
+  color: #8e8e8e;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: block;
+}
+
+/* ==========================================
+   Estilos Muro de Deseos & Tarjetas
+   ========================================== */
+
+.guestbook-wall {
+  max-width: 820px;
+  margin: 56px auto 0;
+  text-align: left;
+}
+
+.guestbook-wall h3 {
+  color: #f2e8d4;
+  font-size: 34px;
+  text-align: center;
+  margin-bottom: 28px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.guestbook-grid {
+  column-count: 2;
+  column-gap: 20px;
+}
+
+@media (max-width: 639px) {
+  .guestbook-grid {
+    column-count: 1;
+  }
+}
+
+@keyframes gentleDance {
+  0% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-3px) rotate(-0.4deg); }
+  50% { transform: translateY(0px) rotate(0deg); }
+  75% { transform: translateY(3px) rotate(0.4deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.guestbook-card {
+  break-inside: avoid;
+  margin-bottom: 20px;
+  background: #faf6ed;
+  border: 1px solid rgba(216, 198, 156, 0.8);
+  border-radius: 10px;
+  padding: 20px 22px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  animation: gentleDance 2.8s ease-in-out infinite;
+}
+
+.guestbook-card:hover {
+  animation-play-state: paused;
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+  border-color: rgba(169, 139, 84, 0.9);
+}
+
+.guestbook-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.guestbook-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a98b54, #80652e);
+  color: #ffffff;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: bold;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.guestbook-author-info strong {
+  color: #80652e;
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  display: block;
+  line-height: 1.2;
+}
+
+.guestbook-song-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(128, 101, 46, 0.08);
+  border: 1px solid rgba(128, 101, 46, 0.2);
+  color: #80652e;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.guestbook-message {
+  color: #534838;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 19px;
+  font-style: italic;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.guestbook-loading,
+.guestbook-empty {
+  text-align: center;
+  color: #f2e8d4;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  font-style: italic;
+}
+
+/* ==========================================
+   Modal Pantalla Completa & Adaptaciones
+   ========================================== */
+
+.instagram-card.is-fullscreen {
+  position: fixed;
+  inset: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  border-radius: 0 !important;
+  background: #000000 !important;
+  z-index: 1005;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.instagram-card.is-fullscreen .instagram-header,
+.instagram-card.is-fullscreen .instagram-footer {
+  display: none !important;
+}
+
+.instagram-card.is-fullscreen .instagram-image-container,
+.instagram-card.is-fullscreen .modal-swiper-wrapper {
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh !important;
+}
+
+.instagram-card.is-fullscreen .instagram-image {
+  max-width: 95vw !important;
+  max-height: 90vh !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
+.fullscreen-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: transform 0.2s ease, background 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.fullscreen-close-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: scale(1.1);
+}
+
+@media (min-width: 640px) {
+  .instagram-card {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    grid-template-rows: auto 1fr;
+    max-height: 80vh;
+  }
+
+  .instagram-header {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .instagram-image-container {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    height: 100%;
+    max-height: 80vh;
+  }
+
+  .instagram-footer {
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(80vh - 60px);
+  }
+}
+
+@media (max-width: 639px) {
+  .instagram-card {
+    width: 96vw;
+    max-height: 90vh;
+  }
+
+  .instagram-image-container {
+    flex: 1;
+    max-height: 55vh;
+  }
+
+  .instagram-footer {
+    max-height: 30vh;
+    padding: 10px 12px;
+  }
+}
+
+/* ==========================================
+   Itinerario Opción 2: Doble Escenario
+   ========================================== */
+
+.scenarios-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 1080px;
+  margin: 48px auto 0;
+  text-align: left;
+}
+
+.scenario-card {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(169, 139, 84, 0.45);
+  border-radius: 12px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+}
+
+.scenario-header {
+  border-bottom: 1px solid rgba(169, 139, 84, 0.25);
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+}
+
+.scenario-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #80652e;
+  background: rgba(128, 101, 46, 0.08);
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.scenario-header h3 {
+  margin: 0;
+  font-size: 28px;
+  color: #80652e;
+}
+
+.scenario-location {
+  margin: 4px 0 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 16px;
+  color: #625237;
+  font-style: italic;
+}
+
+.scenario-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.scenario-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.scenario-item time {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #80652e;
+  min-width: 72px;
+  padding-top: 2px;
+}
+
+.scenario-item-content h4 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  color: #534838;
+  font-weight: 600;
+}
+
+.scenario-item-content p {
+  margin: 4px 0 0;
+  font-size: 15px !important;
+  color: #625237;
+  line-height: 1.3;
+}
+
+.scenario-map-btn {
+  display: inline-block;
+  margin-top: 24px;
+  text-align: center;
+  border: 1px solid #80652e;
+  color: #80652e;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.scenario-map-btn:hover {
+  background: #80652e;
+  color: #ffffff;
+}
+
+@media (max-width: 820px) {
+  .scenarios-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* ==========================================
+   Botón Flotante Dinámico "Guarda la Fecha"
+   ========================================== */
+
+.floating-save-date-btn {
+  position: fixed;
+  bottom: 22px;
+  left: 22px;
+  background: #80652e;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+  z-index: 15;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease, background 0.2s ease;
+}
+
+.floating-save-date-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.floating-save-date-btn:hover {
+  background: #625237;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ==========================================
+   Badges de Conteo para Grid Instagram
+   ========================================== */
+
+.badge-multiple-count {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 6px;
+}
+
+.calendar-add-btn {
+  display: inline-block;
+  margin-top: 12px;
+  background: rgba(128, 101, 46, 0.1);
+  color: #80652e !important;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: background 0.2s ease;
+}
+
+.calendar-add-btn:hover {
+  background: rgba(128, 101, 46, 0.2);
+}
+
+/* ==========================================
+   Popover de Selección de Calendarios
+   ========================================== */
+
+.calendar-popover {
+  position: fixed;
+  bottom: 80px;
+  left: 22px;
+  background: #ffffff;
+  border: 1px solid rgba(169, 139, 84, 0.4);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 25;
+  min-width: 230px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.calendar-popover.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.popover-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+}
+
+.popover-header span {
+  font-size: 11px;
+  font-weight: 600;
+  color: #80652e;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.calendar-popover a,
+.calendar-popover button {
+  background: rgba(128, 101, 46, 0.05);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #534838;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.calendar-popover a:hover,
+.calendar-popover button:hover {
+  background: rgba(128, 101, 46, 0.12);
+  border-color: rgba(169, 139, 84, 0.3);
+  color: #80652e;
+}
+
+/* ==========================================
+   Prueba Social & Animación Muro de Deseos
+   ========================================== */
+
+.social-proof-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(234, 216, 173, 0.18);
+  border: 1px solid rgba(234, 216, 173, 0.35);
+  color: #f2e8d4;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 24px;
+}
+
+.text-gold {
+  color: #dfc286;
+}
+
+@keyframes goldGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(223, 194, 134, 0.8);
+    border-color: #dfc286;
+  }
+  50% {
+    box-shadow: 0 0 24px 8px rgba(223, 194, 134, 0.6);
+    border-color: #ffffff;
+  }
+  100% {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+    border-color: rgba(216, 198, 156, 0.8);
+  }
+}
+
+.guestbook-card.new-entry-highlight {
+  animation: goldGlow 3.2s ease-out forwards !important;
+}
+
+/* ==========================================
+   Lazy Loading & Placeholder para Mapas
+   ========================================== */
+
+.map-container {
+  width: 100%;
+  min-height: 470px;
+  position: relative;
+  background: #2a2e26;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #f2e8d4;
+  cursor: pointer;
+  padding: 24px;
+  text-align: center;
+  transition: transform 0.25s ease;
+}
+
+.map-placeholder:hover {
+  transform: scale(1.04);
+}
+
+.map-placeholder span {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   Contador de Diapositivas Modal (Ejemplo: 1 / 5)
+   ========================================== */
+
+.modal-slide-counter {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  z-index: 10;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+/* ==========================================
+   Buscador de Canciones iTunes & Badge con Carátula (38px)
+   ========================================== */
+
+.song-search-container {
+  position: relative;
+}
+
+.input-with-search-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon-inside {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #a98b54;
+  pointer-events: none;
+}
+
+.clear-song-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #80652e;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.song-autocomplete-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #d8c69c;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  z-index: 50;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.song-autocomplete-dropdown li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.song-autocomplete-dropdown li:last-child {
+  border-bottom: none;
+}
+
+.song-autocomplete-dropdown li:hover {
+  background: rgba(128, 101, 46, 0.08);
+}
+
+.song-artwork-thumb {
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.song-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  overflow: hidden;
+}
+
+.song-info strong {
+  font-size: 13px;
+  color: #534838;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.song-info span {
+  font-size: 11px;
+  color: #80652e;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* Badge de Canción Dedicada dentro de la tarjeta del Muro */
+.guestbook-song-card-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(128, 101, 46, 0.08);
+  border: 1px solid rgba(128, 101, 46, 0.2);
+  border-radius: 8px;
+  padding: 6px 10px;
+  margin-bottom: 12px;
+}
+
+.song-badge-cover {
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.song-badge-details {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  overflow: hidden;
+}
+
+.song-badge-title {
+  font-size: 10px;
+  color: #80652e;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.song-badge-name {
+  font-size: 13px;
+  color: #534838;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==========================================
+   Cuadrícula de Vestimenta (Dress Code Grid)
+   ========================================== */
+
+.dress-code-grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 820px;
+  margin: 36px auto 0;
+}
+
+.dress-grid-item {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #000000;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.dress-media-item {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.dress-grid-item:hover .dress-media-item {
+  transform: scale(1.06);
+}
+
+.dress-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.dress-grid-item:hover .dress-item-overlay {
+  opacity: 1;
+}
+
+.dress-item-overlay span {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 15px;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .dress-code-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+.dedication-subtitle {
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 22px;
+  font-style: italic;
+  color: #ead8ad;
+  margin-top: 12px;
+  letter-spacing: 1px;
+}
+
+/* ==========================================
+   Sección Celestial Poética (Contenedor Base)
+   ========================================== */
+
+.poetry-celestial-section {
+  position: relative; z-index: 1;
+  background: radial-gradient(circle at 50% 30%, #17241f 0%, #0d1311 75%);
+  padding: 100px 24px;
+  text-align: center;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+/* Portal de Transición con Revelado Suave */
+.poetry-intro-portal {
+  position: relative;
+  z-index: 4;
+  max-width: 650px;
+  margin: 0 auto 56px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.poetry-celestial-section.is-visible .poetry-intro-portal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.poetry-divider-ornament {
+  color: #dfc286;
+  font-size: 14px;
+  margin: 16px 0;
+  opacity: 0.8;
+  letter-spacing: 4px;
+}
+
+.poetry-portal-quote {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 21px;
+  font-style: italic;
+  color: #ead8ad;
+  line-height: 1.4;
+  margin-top: 12px;
+}
+
+/* Grilla de Tarjetas Poéticas */
+.poetry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 4;
+}
+
+/* Tarjetas Poéticas con Revelado Escalonado */
+.poetry-card {
+  position: relative;
+  z-index: 4;
+  background: rgba(18, 24, 21, 0.88);
+  border-radius: 20px;
+  padding: 36px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transform: translateY(80px) scale(0.95);
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s ease, 
+              border-color 0.4s ease;
+}
+
+/* Revelado progresivo al hacer scroll */
+.poetry-celestial-section.is-visible .poetry-card.moon-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0.2s;
+}
+
+.poetry-celestial-section.is-visible .poetry-card.sun-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0.5s;
+}
+
+/* Aura Plateada para La Luna */
+.poetry-card.moon-card {
+  border: 1px solid rgba(212, 225, 235, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(180, 205, 225, 0.05);
+}
+
+.poetry-card.moon-card:hover {
+  transform: translateY(-6px) scale(1);
+  border-color: rgba(212, 225, 235, 0.6);
+  box-shadow: 0 16px 40px rgba(180, 205, 225, 0.18), inset 0 0 25px rgba(180, 205, 225, 0.1);
+}
+
+/* Aura Dorada para El Sol */
+.poetry-card.sun-card {
+  border: 1px solid rgba(223, 194, 134, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(223, 194, 134, 0.05);
+}
+
+.poetry-card.sun-card:hover {
+  transform: translateY(-6px) scale(1);
+  border-color: rgba(223, 194, 134, 0.7);
+  box-shadow: 0 16px 40px rgba(223, 194, 134, 0.22), inset 0 0 25px rgba(223, 194, 134, 0.12);
+}
+
+/* Ilustración e Imágenes Nítidas */
+.poetry-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.poetry-illustration {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Formato Editorial del Texto del Poema */
+.poetry-content {
+  width: 100%;
+  text-align: center;
+}
+
+.poetry-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #dfc286;
+  margin-bottom: 8px;
+}
+
+.poetry-title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 28px;
+  color: #f2e8d4;
+  margin: 4px 0 6px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.poetry-dedication {
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #dfc286;
+  margin: 0 0 28px;
+  opacity: 0.9;
+}
+
+.poetry-text p {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 19px;
+  font-style: italic;
+  line-height: 1.55;
+  color: #f7f3eb;
+  margin: 0;
+}
+
+.poetry-footer {
+  margin-top: 36px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(223, 194, 134, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.poetry-author {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: #dfc286;
+}
+
+.poetry-date {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 13px;
+  font-style: italic;
+  color: #f7f3eb;
+  opacity: 0.65;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .poetry-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+/* ==========================================
+   Rediseño Pro de Comentarios en Modal Instagram
+   ========================================== */
+
+.photo-interactions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  margin-top: 12px;
+  border-top: 1px solid rgba(216, 198, 156, 0.4);
+  padding-top: 14px;
+}
+
+.photo-likes-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.like-action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.like-action-btn:hover {
+  transform: scale(1.15);
+}
+
+.likes-counter-text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  color: #534838;
+}
+
+.photo-comments-scroll-area {
+  max-height: 140px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 4px;
+}
+
+.no-comments-hint {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 15px;
+  font-style: italic;
+  color: #80652e;
+  margin: 4px 0;
+  text-align: center;
+}
+
+.photo-comment-bubble {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: rgba(250, 246, 237, 0.6);
+  border: 1px solid rgba(216, 198, 156, 0.4);
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.comment-avatar-mini {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a98b54, #80652e);
+  color: #ffffff;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: bold;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.comment-bubble-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.comment-bubble-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.comment-bubble-header strong {
+  font-size: 12px;
+  color: #80652e;
+  font-family: "Montserrat", sans-serif;
+}
+
+.comment-bubble-header span {
+  font-size: 10px;
+  color: #8e8e8e;
+}
+
+.comment-bubble-content p {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  color: #534838;
+  line-height: 1.35;
+}
+
+/* Caja de Formulario Pro Ad Hoc */
+.photo-comment-box-form {
+  margin-top: 4px;
+}
+
+.comment-inputs-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.comment-input-field {
+  background: #faf6ed;
+  border: 1px solid #d8c69c;
+  border-radius: 6px;
+  color: #534838;
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  padding: 8px 12px;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comment-input-field:focus {
+  border-color: #80652e;
+  box-shadow: 0 0 0 2px rgba(169, 139, 84, 0.15);
+}
+
+.comment-textarea-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.comment-textarea-field {
+  background: #faf6ed;
+  border: 1px solid #d8c69c;
+  border-radius: 6px;
+  color: #534838;
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  padding: 8px 40px 8px 12px;
+  outline: none;
+  width: 100%;
+  resize: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comment-textarea-field:focus {
+  border-color: #80652e;
+  box-shadow: 0 0 0 2px rgba(169, 139, 84, 0.15);
+}
+
+.comment-send-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #80652e;
+  border: none;
+  color: #ffffff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.comment-send-btn:hover {
+  background: #625237;
+  transform: translateY(-50%) scale(1.08);
+}
+
+/* ==========================================
+   Botones Flotantes Apilados (Esquina Inferior Izquierda)
+   ========================================== */
+
+/* Botón superior: Guarda la fecha */
+.floating-save-date-btn {
+  position: fixed !important;
+  bottom: 72px !important; /* Ubicado arriba */
+  left: 24px !important;
+  right: auto !important;
+  z-index: 999 !important;
+}
+
+/* Botón inferior: Confirmar asistencia (WhatsApp) */
+.floating-whatsapp-btn {
+  position: fixed !important;
+  bottom: 20px !important; /* Ubicado abajo */
+  left: 24px !important;
+  right: auto !important;
+  z-index: 999 !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #878b88;
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(181, 177, 177, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
+}
+
+.floating-whatsapp-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.floating-whatsapp-btn:hover {
+  background-color: #292d2b;
+  transform: translateY(-2px);
+}
+
+/* Ajustes responsivos para móviles */
+@media (max-width: 768px) {
+  .floating-save-date-btn {
+    bottom: 64px !important;
+    left: 16px !important;
+    padding: 7px 12px;
+    font-size: 11px;
+  }
+  .floating-whatsapp-btn {
+    bottom: 16px !important;
+    left: 16px !important;
+    padding: 7px 12px;
+    font-size: 11px;
+  }
+}
