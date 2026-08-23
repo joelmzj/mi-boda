@@ -10,10 +10,18 @@ function App() {
   const [envelopeOpened, setEnvelopeOpened] = useState(false);
   const music = useBackgroundMusic(backgroundAudioSrc);
 
+  const handleEnvelopeOpen = () => {
+    setEnvelopeOpened(true);
+    // Si la música no está sonando, aprovechamos la interacción del usuario con el sobre para activarla
+    if (!music.playing && typeof music.toggle === "function") {
+      music.toggle();
+    }
+  };
+
   return (
     <>
       {!envelopeOpened && (
-        <Intro onEnvelopeOpen={() => setEnvelopeOpened(true)} />
+        <Intro onEnvelopeOpen={handleEnvelopeOpen} />
       )}
 
       {envelopeOpened && <Invitation />}
