@@ -177,7 +177,7 @@ const couplePosts = [
   },
   {
     id: "post-3",
-    caption: "Muvhas aventuras juntos. 😄❤️",
+    caption: "Muchas aventuras juntos. 😄❤️",
     date: "21 DE NOVIEMBRE DE 2026",
     media: [
       {
