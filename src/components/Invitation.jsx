@@ -174,7 +174,7 @@ const couplePosts = [
         alt: "Selfie de cerca con luces al fondo",
       },
     ],
-  }
+  },
   {
     id: "post-3",
     caption: "Muvhas aventuras juntos. 😄❤️",
@@ -913,7 +913,7 @@ export function Invitation() {
           <p className="kicker">Lazos en forma de</p>
           <h2>Obsequios</h2>
           <p className="lead">
-            Tu presencia es nuestro mejor regalo. Si deseas tener un detalle adicional con nosotros para nuestro nuevo hogar / luna de miel, será bien recibido.
+            Tu presencia es nuestro mejor regalo. Si deseas tener un detalle adicional con nosotros para nuestro nuevo hogar/luna de miel, será bien recibido.
           </p>
           <div className="gift-card">
             <h3>Lluvia de sobres</h3>
