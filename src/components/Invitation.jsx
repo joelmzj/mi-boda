@@ -1111,6 +1111,13 @@ export function Invitation() {
           </div>
         </section>
 
+        {/* Divisor elegante entre el Muro y los Poemas */}
+        <div className="section-divider-container">
+          <hr className="section-divider-line" />
+          <span className="section-divider-ornament">✨</span>
+          <hr className="section-divider-line" />
+        </div>
+
         {/* ==========================================
             Sección Interactiva: La Luna y el Sol (Easter Egg) en Paralelo
            ========================================== */}
@@ -1196,22 +1203,14 @@ export function Invitation() {
         <p className="footer-dedication">Hecho por Joel para Itsa con ❤️</p>
       </footer>
 
-      {/* Modal Poético (Easter Egg) */}
+      {/* Modal Poético (Easter Egg) con clases independientes */}
       {activePoetryModal && (
         <div className="image-modal-overlay" onClick={closeModal}>
           <div
-            className="instagram-card"
+            className="poetry-modal-card"
             onClick={(e) => e.stopPropagation()}
-            style={{ 
-              background: "#121815", 
-              color: "#ffffff", 
-              maxWidth: "600px", 
-              maxHeight: "85vh", 
-              border: "1px solid rgba(223, 194, 134, 0.4)",
-              overflowY: "auto"
-            }}
           >
-            <div className="instagram-header" style={{ background: "#17241f", borderBottom: "1px solid rgba(223, 194, 134, 0.2)" }}>
+            <div className="poetry-modal-header">
               <div className="instagram-user">
                 <div className="instagram-avatar">I & J</div>
                 <div className="instagram-user-info">
@@ -1231,7 +1230,7 @@ export function Invitation() {
               </button>
             </div>
 
-            <div style={{ padding: "32px 24px", textAlign: "center" }}>
+            <div className="poetry-modal-body">
               <div style={{ width: "130px", margin: "0 auto 20px" }}>
                 <img
                   src={`${base}media/site/${activePoetryModal === 'moon' ? 'Luna.png' : 'Sol.png'}`}
@@ -1250,7 +1249,7 @@ export function Invitation() {
                 — Para Itsa —
               </span>
 
-              <div style={{ fontfamily: "Cormorant Garamond, Georgia, serif", fontSize: "18px", fontStyle: "italic", lineHeight: "1.6", color: "#f7f3eb", textAlign: "center", marginBottom: "30px" }}>
+              <div style={{ fontFamily: "Cormorant Garamond, Georgia, serif", fontSize: "18px", fontStyle: "italic", lineHeight: "1.6", color: "#f7f3eb", textAlign: "center", marginBottom: "30px" }}>
                 {activePoetryModal === 'moon' ? (
                   <p>
                     Vive en mí<br />

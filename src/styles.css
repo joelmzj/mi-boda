@@ -2366,3 +2366,68 @@ footer .ornament {
     font-size: 11px !important;
   }
 }
+
+/* ==========================================
+   Divisor de Secciones Elegante
+   ========================================== */
+
+.section-divider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background-image: url("/img/light-green-texture.webp");
+  background-position: center;
+  background-size: cover;
+  padding: 20px 24px;
+}
+
+.section-divider-line {
+  flex: 1;
+  max-width: 180px;
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(223, 194, 134, 0.6), transparent);
+}
+
+.section-divider-ornament {
+  color: #dfc286;
+  font-size: 16px;
+  opacity: 0.85;
+}
+
+/* ==========================================
+   Corrección Modal Poético (PC y Móvil)
+   ========================================== */
+
+.poetry-modal-card {
+  background: #121815;
+  color: #ffffff;
+  max-width: 600px;
+  width: 92vw;
+  max-height: 85vh;
+  border-radius: 12px;
+  border: 1px solid rgba(223, 194, 134, 0.4);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+  animation: fadeIn 0.25s ease-out;
+}
+
+.poetry-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #17241f;
+  border-bottom: 1px solid rgba(223, 194, 134, 0.2);
+  flex-shrink: 0;
+}
+
+.poetry-modal-body {
+  padding: 32px 24px;
+  overflow-y: auto;
+  text-align: center;
+  flex: 1;
+}
