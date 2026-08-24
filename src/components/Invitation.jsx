@@ -183,7 +183,7 @@ const couplePosts = [
       {
         id: 8,
         type: "image",
-        src: `${base}media/couple/couple-3.1.webp`,
+        src: `${base}media/couple/couple-3.5.webp`,
         alt: "Pareja vestida elegante en recepción",
       },
       {
@@ -207,7 +207,7 @@ const couplePosts = [
       {
         id: 13,
         type: "image",
-        src: `${base}media/couple/couple-3.5.webp`,
+        src: `${base}media/couple/couple-3.1.webp`,
         alt: "Pareja abrazada en noche de fiesta",
       },
     ],
