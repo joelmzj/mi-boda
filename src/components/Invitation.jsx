@@ -145,37 +145,6 @@ const couplePosts = [
     ],
   },
   {
-    id: "post-2",
-    caption: "Aquí empezó nuestra aventura de verdad... 🎄🌟",
-    date: "8 DE DICIEMBRE DE 2025",
-    media: [
-      {
-        id: 4,
-        type: "image",
-        src: `${base}media/couple/couple-2.1.webp`,
-        alt: "Selfie de pareja frente a árbol navideño",
-      },
-      {
-        id: 5,
-        type: "image",
-        src: `${base}media/couple/couple-2.2.webp`,
-        alt: "Selfie nocturno frente a estructura navideña",
-      },
-      {
-        id: 6,
-        type: "image",
-        src: `${base}media/couple/couple-2.3.webp`,
-        alt: "Selfie de cerca con luces al fondo",
-      },
-      {
-        id: 7,
-        type: "image",
-        src: `${base}media/couple/couple-2.4.webp`,
-        alt: "Selfie de cerca con luces al fondo",
-      },
-    ],
-  },
-  {
     id: "post-3",
     caption: "Primera Semana Santa juntos. 😄❤️",
     date: "21 DE NOVIEMBRE DE 2026",
@@ -225,6 +194,37 @@ const couplePosts = [
       },
     ],
   },
+  {
+    id: "post-2",
+    caption: "Aquí empezó nuestra aventura de verdad... 🎄🌟",
+    date: "8 DE DICIEMBRE DE 2025",
+    media: [
+      {
+        id: 4,
+        type: "image",
+        src: `${base}media/couple/couple-2.4.webp`,
+        alt: "Selfie de pareja frente a árbol navideño",
+      },
+      {
+        id: 5,
+        type: "image",
+        src: `${base}media/couple/couple-2.2.webp`,
+        alt: "Selfie nocturno frente a estructura navideña",
+      },
+      {
+        id: 6,
+        type: "image",
+        src: `${base}media/couple/couple-2.3.webp`,
+        alt: "Selfie de cerca con luces al fondo",
+      },
+      {
+        id: 7,
+        type: "image",
+        src: `${base}media/couple/couple-2.1.webp`,
+        alt: "Selfie de cerca con luces al fondo",
+      },
+    ],
+  }
 ];
 
 const dressCodeGallery = [
