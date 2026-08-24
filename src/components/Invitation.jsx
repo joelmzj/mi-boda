@@ -232,7 +232,7 @@ const dressCodeGallery = [
     id: 1,
     src: `${base}media/dress-code/dress-2.webp`,
     alt: "Referencia de vestimenta femenina 1",
-  }
+  },
 ];
 
 const contactMessage =
@@ -308,7 +308,6 @@ export function Invitation() {
   const openDressModal = (image) => {
     setSelectedDressImage(image);
     setSelectedPost(null);
-    setIsFullScreen(false);
     document.body.style.overflow = "hidden";
   };
 
@@ -404,14 +403,14 @@ export function Invitation() {
   }, [selectedPost, selectedDressImage, activePoetryModal, isFullScreen, showCalendarMenu]);
 
   useEffect(() => {
-    if (selectedPost || selectedDressImage) {
+    if (selectedPost) {
       setShowHint(true);
       const timer = setTimeout(() => setShowHint(false), 3000);
       return () => clearTimeout(timer);
     } else {
       setShowHint(false);
     }
-  }, [selectedPost, selectedDressImage, isFullScreen]);
+  }, [selectedPost, isFullScreen]);
 
   const selectSongItem = (track) => {
     const formattedSong = `${track.trackName} - ${track.artistName}`;
@@ -1328,8 +1327,8 @@ export function Invitation() {
         </div>
       )}
 
-      {/* Modal Instagram con Contador de Diapositivas (1/X) */}
-      {(selectedPost || selectedDressImage) && (
+      {/* Modal Instagram con Contador de Diapositivas (1/X) para Galería de Fotos */}
+      {selectedPost && (
         <div className="image-modal-overlay" onClick={closeModal}>
           <div
             className={`instagram-card ${isFullScreen ? "is-fullscreen" : ""}`}
@@ -1357,73 +1356,65 @@ export function Invitation() {
               onClick={() => setIsFullScreen(!isFullScreen)}
               style={{ cursor: isFullScreen ? "zoom-out" : "zoom-in" }}
             >
-              {selectedPost ? (
-                <div
-                  className="modal-swiper-wrapper"
-                  onClick={(e) => e.stopPropagation()}
+              <div
+                className="modal-swiper-wrapper"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {selectedPost.media.length > 1 && (
+                  <div className="modal-slide-counter">
+                    {activeSlideIndex} / {selectedPost.media.length}
+                  </div>
+                )}
+
+                <Swiper
+                  slidesPerView={1}
+                  spaceBetween={0}
+                  pagination={{ clickable: true }}
+                  navigation={{
+                    prevEl: ".modal-prev",
+                    nextEl: ".modal-next",
+                  }}
+                  onSlideChange={(swiper) =>
+                    setActiveSlideIndex(swiper.activeIndex + 1)
+                  }
+                  modules={[Pagination, Navigation, Mousewheel, Keyboard]}
+                  className="modal-swiper"
                 >
-                  {selectedPost.media.length > 1 && (
-                    <div className="modal-slide-counter">
-                      {activeSlideIndex} / {selectedPost.media.length}
-                    </div>
-                  )}
+                  {selectedPost.media.map((item) => (
+                    <SwiperSlide key={`modal-item-${item.id}`}>
+                      {item.type === "video" ? (
+                        <video
+                          src={item.src}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="instagram-image"
+                          onClick={() => setIsFullScreen(!isFullScreen)}
+                        />
+                      ) : (
+                        <img
+                          src={item.src}
+                          alt={item.alt}
+                          className="instagram-image"
+                          onClick={() => setIsFullScreen(!isFullScreen)}
+                        />
+                      )}
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
 
-                  <Swiper
-                    slidesPerView={1}
-                    spaceBetween={0}
-                    pagination={{ clickable: true }}
-                    navigation={{
-                      prevEl: ".modal-prev",
-                      nextEl: ".modal-next",
-                    }}
-                    onSlideChange={(swiper) =>
-                      setActiveSlideIndex(swiper.activeIndex + 1)
-                    }
-                    modules={[Pagination, Navigation, Mousewheel, Keyboard]}
-                    className="modal-swiper"
-                  >
-                    {selectedPost.media.map((item) => (
-                      <SwiperSlide key={`modal-item-${item.id}`}>
-                        {item.type === "video" ? (
-                          <video
-                            src={item.src}
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                            className="instagram-image"
-                            onClick={() => setIsFullScreen(!isFullScreen)}
-                          />
-                        ) : (
-                          <img
-                            src={item.src}
-                            alt={item.alt}
-                            className="instagram-image"
-                            onClick={() => setIsFullScreen(!isFullScreen)}
-                          />
-                        )}
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-
-                  {selectedPost.media.length > 1 && (
-                    <>
-                      <button className="swiper-button-prev-custom modal-prev">
-                        <ChevronLeft className="h-5 w-5" />
-                      </button>
-                      <button className="swiper-button-next-custom modal-next">
-                        <ChevronRight className="h-5 w-5" />
-                      </button>
-                    </>
-                  )}
-                </div>
-              ) : (
-                <img
-                  className="instagram-image"
-                  src={selectedDressImage.src}
-                  alt={selectedDressImage.alt}
-                />
-              )}
+                {selectedPost.media.length > 1 && (
+                  <>
+                    <button className="swiper-button-prev-custom modal-prev">
+                      <ChevronLeft className="h-5 w-5" />
+                    </button>
+                    <button className="swiper-button-next-custom modal-next">
+                      <ChevronRight className="h-5 w-5" />
+                    </button>
+                  </>
+                )}
+              </div>
 
               {isFullScreen && (
                 <button
@@ -1452,17 +1443,32 @@ export function Invitation() {
             <div className="instagram-footer">
               <p className="instagram-caption">
                 <span className="username">itsa_joel</span>{" "}
-                {selectedPost
-                  ? selectedPost.caption
-                  : "Código de vestimenta para nuestra boda. ✨"}
+                {selectedPost.caption}
               </p>
-              <span className="instagram-date">
-                {selectedPost ? selectedPost.date : "21 DE NOVIEMBRE DE 2026"}
-              </span>
+              <span className="instagram-date">{selectedPost.date}</span>
 
-              {selectedPost && <PhotoComments photoId={selectedPost.id} />}
+              <PhotoComments photoId={selectedPost.id} />
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Modal Directo a Pantalla Completa para Dress Code */}
+      {selectedDressImage && (
+        <div className="fullscreen-dress-modal" onClick={closeModal}>
+          <button
+            className="fullscreen-close-btn"
+            onClick={closeModal}
+            aria-label="Cerrar"
+          >
+            <X className="h-6 w-6" />
+          </button>
+          <img
+            className="fullscreen-dress-image"
+            src={selectedDressImage.src}
+            alt={selectedDressImage.alt}
+            onClick={(e) => e.stopPropagation()}
+          />
         </div>
       )}
     </>

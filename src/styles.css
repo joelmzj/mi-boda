@@ -2006,13 +2006,12 @@ footer .ornament {
 }
 
 /* ==========================================
-   Cuadrícula de Vestimenta (Dress Code Grid)
+   Cuadrícula de Vestimenta (Dress Code Centrada)
    ========================================== */
 
 .dress-code-grid-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  display: flex;
+  justify-content: center;
   width: 100%;
   max-width: 820px;
   margin: 36px auto 0;
@@ -2021,6 +2020,7 @@ footer .ornament {
 .dress-grid-item {
   position: relative;
   aspect-ratio: 3 / 4;
+  width: 260px;
   border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
@@ -2063,11 +2063,32 @@ footer .ornament {
   letter-spacing: 0.5px;
 }
 
-@media (max-width: 768px) {
-  .dress-code-grid-container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
+/* ==========================================
+   Modal Directo a Pantalla Completa para Dress Code
+   ========================================== */
+
+.fullscreen-dress-modal {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1005;
+  animation: fadeIn 0.25s ease-out;
+  cursor: zoom-out;
+}
+
+.fullscreen-dress-image {
+  max-width: 92vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
 .dedication-subtitle {
