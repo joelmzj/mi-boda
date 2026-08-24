@@ -297,7 +297,7 @@ const couplePosts = [
       },
       {
         id: 9,
-        type: "image",
+        type: "video",
         src: `${base}media/couple/couple-3.2.mp4`,
         alt: "Selfie espontáneo sonriendo alegremente",
       },
@@ -784,156 +784,6 @@ export function Invitation() {
           </div>
         </section>
 
-        {/* ==========================================
-            Sección Celestial Poética (Canvas 100% Fluido)
-           ========================================== */}
-        <section
-          ref={poetryRef}
-          className={`poetry-celestial-section ${isPoetryVisible ? "is-visible" : ""}`}
-          id="poesia"
-        >
-          {/* Canvas de estrellas con movimiento orgánico e impredecible */}
-          <StarfieldCanvas />
-
-          <div className="poetry-intro-portal">
-            <p className="kicker light">Nuestra historia en versos</p>
-            <h2>La Luna y el Sol</h2>
-            <div className="poetry-divider-ornament">✦ ─────────────────── ✦</div>
-            <p className="poetry-portal-quote">
-              “La Palabra que crea creó nuestro amor...”
-            </p>
-          </div>
-
-          <div className="poetry-grid">
-            {/* Tarjeta Luna */}
-            <article className="poetry-card moon-card">
-              <div className="poetry-image-wrapper">
-                <img
-                  src={`${base}media/site/Luna.png`}
-                  alt="Ilustración de la Luna"
-                  className="poetry-illustration"
-                />
-              </div>
-
-              <div className="poetry-content">
-                <span className="poetry-tag">La Luna</span>
-                <h3 className="poetry-title">Menguante</h3>
-                <span className="poetry-dedication">— Para Itsa —</span>
-
-                <div className="poetry-text">
-                  <p>
-                    Vive en mí<br />
-                    como mi sangre,<br />
-                    como una espina<br />
-                    que busca mi centro,<br />
-                    como el aliento<br />
-                    que pierdo si te acercas.<br />
-                    <br />
-                    Vive en mi carne,<br />
-                    vive en mi sangre,<br />
-                    vive de mí.<br />
-                    <br />
-                    Que mi sombra<br />
-                    sea la tuya,<br />
-                    que tus pasos<br />
-                    se confundan<br />
-                    con los míos.<br />
-                    <br />
-                    Que mi aliento<br />
-                    lo comparta con tu boca,<br />
-                    que tu cuerpo<br />
-                    sea la roca<br />
-                    en que me asiente,<br />
-                    en que me rompa.<br />
-                    <br />
-                    Que tus labios sean mi sueño,<br />
-                    tu saliva mi alimento,<br />
-                    tus palabras la razón de cada paso,<br />
-                    cada encuentro.<br />
-                    <br />
-                    Que me ahuese entre tus pechos<br />
-                    y me duerma<br />
-                    mansamente,<br />
-                    hondamente,<br />
-                    sin tiempo,<br />
-                    sin prisas.<br />
-                    <br />
-                    Vive en mí<br />
-                    como mi vida,<br />
-                    como esta mano<br />
-                    que extiendo hacia la tuya.<br />
-                    <br />
-                    Vive en mí,<br />
-                    conmigo,<br />
-                    de mí.<br />
-                    <br />
-                    Lejos de ti<br />
-                    no hay nada.
-                  </p>
-                </div>
-
-                <div className="poetry-footer">
-                  <span className="poetry-author">Joel M. J.</span>
-                  <span className="poetry-date">7 de abril de 2026</span>
-                </div>
-              </div>
-            </article>
-
-            {/* Tarjeta Sol */}
-            <article className="poetry-card sun-card">
-              <div className="poetry-image-wrapper">
-                <img
-                  src={`${base}media/site/Sol.png`}
-                  alt="Ilustración del Sol"
-                  className="poetry-illustration"
-                />
-              </div>
-
-              <div className="poetry-content">
-                <span className="poetry-tag">El Sol</span>
-                <h3 className="poetry-title">Fronterizo</h3>
-                <span className="poetry-dedication">— Para Itsa —</span>
-
-                <div className="poetry-text">
-                  <p>
-                    El límite es la mirada,<br />
-                    pero más allá hay verdor<br />
-                    y un sol ardiente que entibia<br />
-                    el corazón.<br />
-                    <br />
-                    Frontera entre tú y yo,<br />
-                    los ojos.<br />
-                    <br />
-                    El suspiro me invita hacia tu pecho<br />
-                    y el silencio es el guardián de tus encantos.<br />
-                    <br />
-                    También quiero cruzar esa frontera:<br />
-                    mirar cerca los ojos que yo quiero,<br />
-                    contemplar la sonrisa constelada.<br />
-                    <br />
-                    La silueta en que se mece la luna<br />
-                    es el descanso que quieren mis manos.<br />
-                    <br />
-                    Esta patria perdida me retiene<br />
-                    y el ojo escapa lejos a tus tierras.<br />
-                    <br />
-                    Frontera entre tú y yo,<br />
-                    esa mirada<br />
-                    que viene hacia la mía con sus misterios,<br />
-                    me invita a que la siga hacia su estancia<br />
-                    y me envuelve de amor entre tus besos.
-                  </p>
-                </div>
-
-                <div className="poetry-footer">
-                  <span className="poetry-author">Joel M. J.</span>
-                  <span className="poetry-date">8 de diciembre de 2025</span>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-
         {/* Sección "El Gran Día" */}
         <section className="details-section dark-paper-section" id="detalles">
           <p className="kicker">Guarda la fecha</p>
@@ -1340,6 +1190,157 @@ export function Invitation() {
             )}
           </div>
         </section>
+
+        {/* ==========================================
+            Sección Celestial Poética (Movida Arriba del Footer)
+           ========================================== */}
+        <section
+          ref={poetryRef}
+          className={`poetry-celestial-section ${isPoetryVisible ? "is-visible" : ""}`}
+          id="poesia"
+        >
+          {/* Canvas de estrellas con movimiento orgánico e impredecible */}
+          <StarfieldCanvas />
+
+          <div className="poetry-intro-portal">
+            <p className="kicker light">Nuestra historia en versos</p>
+            <h2>La Luna y el Sol</h2>
+            <div className="poetry-divider-ornament">✦ ─────────────────── ✦</div>
+            <p className="poetry-portal-quote">
+              “La Palabra que crea creó nuestro amor...”
+            </p>
+          </div>
+
+          <div className="poetry-grid">
+            {/* Tarjeta Luna */}
+            <article className="poetry-card moon-card">
+              <div className="poetry-image-wrapper">
+                <img
+                  src={`${base}media/site/Luna.png`}
+                  alt="Ilustración de la Luna"
+                  className="poetry-illustration"
+                />
+              </div>
+
+              <div className="poetry-content">
+                <span className="poetry-tag">La Luna</span>
+                <h3 className="poetry-title">Menguante</h3>
+                <span className="poetry-dedication">— Para Itsa —</span>
+
+                <div className="poetry-text">
+                  <p>
+                    Vive en mí<br />
+                    como mi sangre,<br />
+                    como una espina<br />
+                    que busca mi centro,<br />
+                    como el aliento<br />
+                    que pierdo si te acercas.<br />
+                    <br />
+                    Vive en mi carne,<br />
+                    vive en mi sangre,<br />
+                    vive de mí.<br />
+                    <br />
+                    Que mi sombra<br />
+                    sea la tuya,<br />
+                    que tus pasos<br />
+                    se confundan<br />
+                    con los míos.<br />
+                    <br />
+                    Que mi aliento<br />
+                    lo comparta con tu boca,<br />
+                    que tu cuerpo<br />
+                    sea la roca<br />
+                    en que me asiente,<br />
+                    en que me rompa.<br />
+                    <br />
+                    Que tus labios sean mi sueño,<br />
+                    tu saliva mi alimento,<br />
+                    tus palabras la razón de cada paso,<br />
+                    cada encuentro.<br />
+                    <br />
+                    Que me ahuese entre tus pechos<br />
+                    y me duerma<br />
+                    mansamente,<br />
+                    hondamente,<br />
+                    sin tiempo,<br />
+                    sin prisas.<br />
+                    <br />
+                    Vive en mí<br />
+                    como mi vida,<br />
+                    como esta mano<br />
+                    que extiendo hacia la tuya.<br />
+                    <br />
+                    Vive en mí,<br />
+                    conmigo,<br />
+                    de mí.<br />
+                    <br />
+                    Lejos de ti<br />
+                    no hay nada.
+                  </p>
+                </div>
+
+                <div className="poetry-footer">
+                  <span className="poetry-author">Joel M. J.</span>
+                  <span className="poetry-date">7 de abril de 2026</span>
+                </div>
+              </div>
+            </article>
+
+            {/* Tarjeta Sol */}
+            <article className="poetry-card sun-card">
+              <div className="poetry-image-wrapper">
+                <img
+                  src={`${base}media/site/Sol.png`}
+                  alt="Ilustración del Sol"
+                  className="poetry-illustration"
+                />
+              </div>
+
+              <div className="poetry-content">
+                <span className="poetry-tag">El Sol</span>
+                <h3 className="poetry-title">Fronterizo</h3>
+                <span className="poetry-dedication">— Para Itsa —</span>
+
+                <div className="poetry-text">
+                  <p>
+                    El límite es la mirada,<br />
+                    pero más allá hay verdor<br />
+                    y un sol ardiente que entibia<br />
+                    el corazón.<br />
+                    <br />
+                    Frontera entre tú y yo,<br />
+                    los ojos.<br />
+                    <br />
+                    El suspiro me invita hacia tu pecho<br />
+                    y el silencio es el guardián de tus encantos.<br />
+                    <br />
+                    También quiero cruzar esa frontera:<br />
+                    mirar cerca los ojos que yo quiero,<br />
+                    contemplar la sonrisa constelada.<br />
+                    <br />
+                    La silueta en que se mece la luna<br />
+                    es el descanso que quieren mis manos.<br />
+                    <br />
+                    Esta patria perdida me retiene<br />
+                    y el ojo escapa lejos a tus tierras.<br />
+                    <br />
+                    Frontera entre tú y yo,<br />
+                    esa mirada<br />
+                    que viene hacia la mía con sus misterios,<br />
+                    me invita a que la siga hacia su estancia<br />
+                    y me envuelve de amor entre tus besos.
+                  </p>
+                </div>
+
+                <div className="poetry-footer">
+                  <span className="poetry-author">Joel M. J.</span>
+                  <span className="poetry-date">8 de diciembre de 2025</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
       </main>
 
       {/* Footer con Firma y Dedicatoria Personal */}
