@@ -230,14 +230,14 @@ const venueEvents = [
 const couplePosts = [
   {
     id: "post-1",
-    caption: "Donde el camino nos cruzó y la vida sonrió. ✨❤️",
-    date: "21 DE NOVIEMBRE DE 2026",
+    caption: "El día que un pequeño detalle lo cambió todo. ✨❤️",
+    date: "9 DE MAYO DE 2026",
     media: [
       {
         id: 1,
         type: "image",
         src: `${base}media/couple/couple-1.webp`,
-        alt: "Pareja sonriendo bajo un quiosco al atardecer",
+        alt: "Pareja abrazada mostrando anillo de compromiso",
       },
       {
         id: 2,
@@ -245,17 +245,23 @@ const couplePosts = [
         src: `${base}media/couple/couple-2.webp`,
         alt: "Pareja abrazada mostrando anillo de compromiso",
       },
+            {
+        id: 3,
+        type: "image",
+        src: `${base}media/couple/couple-3.webp`,
+        alt: "Pareja abrazada mostrando anillo de compromiso",
+      },
     ],
   },
   {
     id: "post-2",
-    caption: "Las luces del invierno y la calidez de tu sonrisa. 🎄🌟",
-    date: "21 DE NOVIEMBRE DE 2026",
+    caption: "Aquí empezó nuestra aventura de verdad... 🎄🌟",
+    date: "8 DE DICIEMBRE DE 2025",
     media: [
       {
-        id: 3,
+        id: 4,
         type: "image",
-        src: `${base}media/couple/couple-3.webp`,
+        src: `${base}media/couple/couple-4.webp`,
         alt: "Selfie de pareja frente a árbol navideño",
       },
       {
@@ -270,6 +276,12 @@ const couplePosts = [
         src: `${base}media/couple/couple-6.webp`,
         alt: "Selfie de cerca con luces al fondo",
       },
+            {
+        id: 7,
+        type: "image",
+        src: `${base}media/couple/couple-7.webp`,
+        alt: "Selfie de cerca con luces al fondo",
+      },
     ],
   },
   {
@@ -278,27 +290,27 @@ const couplePosts = [
     date: "21 DE NOVIEMBRE DE 2026",
     media: [
       {
-        id: 4,
-        type: "image",
-        src: `${base}media/couple/couple-4.webp`,
-        alt: "Pareja vestida elegante en recepción",
-      },
-      {
-        id: 7,
-        type: "image",
-        src: `${base}media/couple/couple-7.webp`,
-        alt: "Selfie espontáneo sonriendo alegremente",
-      },
-      {
         id: 8,
         type: "image",
         src: `${base}media/couple/couple-8.webp`,
-        alt: "Pareja recostada en hamaca multicolor",
+        alt: "Pareja vestida elegante en recepción",
       },
       {
         id: 9,
         type: "image",
         src: `${base}media/couple/couple-9.webp`,
+        alt: "Selfie espontáneo sonriendo alegremente",
+      },
+      {
+        id: 10,
+        type: "image",
+        src: `${base}media/couple/couple-10.webp`,
+        alt: "Pareja recostada en hamaca multicolor",
+      },
+      {
+        id: 11,
+        type: "image",
+        src: `${base}media/couple/couple-11.webp`,
         alt: "Pareja abrazada en noche de fiesta",
       },
     ],
@@ -1097,7 +1109,7 @@ export function Invitation() {
 
           <p className="lead">
             Los invitamos a vestir con un atuendo elegante y cómodo compatible con el otoño, eligiendo
-            entres los tonos a continuación sugeridos. Les agradecemos reservar el blanco y sus tonalidades para la novia.
+            entre los tonos a continuación sugeridos. Les agradecemos reservar el blanco y sus tonalidades para la novia.
           </p>
           <br />
           <p className="gallery-hint">
