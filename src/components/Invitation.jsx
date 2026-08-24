@@ -127,7 +127,7 @@ const couplePosts = [
       {
         id: 1,
         type: "image",
-        src: `${base}media/couple/couple-1.1.webp`,
+        src: `${base}media/couple/couple-1.3.webp`,
         alt: "Pareja abrazada mostrando anillo de compromiso",
       },
       {
@@ -139,7 +139,7 @@ const couplePosts = [
       {
         id: 3,
         type: "image",
-        src: `${base}media/couple/couple-1.3.webp`,
+        src: `${base}media/couple/couple-1.1.webp`,
         alt: "Pareja abrazada mostrando anillo de compromiso",
       },
     ],
@@ -152,13 +152,13 @@ const couplePosts = [
       {
         id: 4,
         type: "image",
-        src: `${base}media/couple/couple-2.4.webp`,
+        src: `${base}media/couple/couple-2.2.webp`,
         alt: "Selfie de pareja frente a árbol navideño",
       },
       {
         id: 5,
         type: "image",
-        src: `${base}media/couple/couple-2.2.webp`,
+        src: `${base}media/couple/couple-2.4.webp`,
         alt: "Selfie nocturno frente a estructura navideña",
       },
       {
