@@ -145,56 +145,6 @@ const couplePosts = [
     ],
   },
   {
-    id: "post-3",
-    caption: "Primera Semana Santa juntos. 😄❤️",
-    date: "21 DE NOVIEMBRE DE 2026",
-    media: [
-      {
-        id: 8,
-        type: "image",
-        src: `${base}media/couple/couple-3.1.webp`,
-        alt: "Pareja vestida elegante en recepción",
-      },
-      {
-        id: 9,
-        type: "video",
-        src: `${base}media/couple/couple-3.2.mp4`,
-        alt: "Selfie espontáneo sonriendo alegremente",
-      },
-    ],
-  },
-  {
-    id: "post-4",
-    caption: "De las risas cotidianas a la gran aventura. 😄❤️",
-    date: "21 DE NOVIEMBRE DE 2026",
-    media: [
-      {
-        id: 10,
-        type: "image",
-        src: `${base}media/couple/couple-8.webp`,
-        alt: "Pareja vestida elegante en recepción",
-      },
-      {
-        id: 11,
-        type: "image",
-        src: `${base}media/couple/couple-12.webp`,
-        alt: "Selfie espontáneo sonriendo alegremente",
-      },
-      {
-        id: 12,
-        type: "image",
-        src: `${base}media/couple/couple-10.webp`,
-        alt: "Pareja recostada en hamaca multicolor",
-      },
-      {
-        id: 13,
-        type: "image",
-        src: `${base}media/couple/couple-11.webp`,
-        alt: "Pareja abrazada en noche de fiesta",
-      },
-    ],
-  },
-  {
     id: "post-2",
     caption: "Aquí empezó nuestra aventura de verdad... 🎄🌟",
     date: "8 DE DICIEMBRE DE 2025",
@@ -225,6 +175,43 @@ const couplePosts = [
       },
     ],
   }
+  {
+    id: "post-3",
+    caption: "Muvhas aventuras juntos. 😄❤️",
+    date: "21 DE NOVIEMBRE DE 2026",
+    media: [
+      {
+        id: 8,
+        type: "image",
+        src: `${base}media/couple/couple-3.1.webp`,
+        alt: "Pareja vestida elegante en recepción",
+      },
+      {
+        id: 10,
+        type: "image",
+        src: `${base}media/couple/couple-3.2.webp`,
+        alt: "Pareja vestida elegante en recepción",
+      },
+      {
+        id: 11,
+        type: "image",
+        src: `${base}media/couple/couple-3.3.webp`,
+        alt: "Selfie espontáneo sonriendo alegremente",
+      },
+      {
+        id: 12,
+        type: "image",
+        src: `${base}media/couple/couple-3.4.webp`,
+        alt: "Pareja recostada en hamaca multicolor",
+      },
+      {
+        id: 13,
+        type: "image",
+        src: `${base}media/couple/couple-3.5.webp`,
+        alt: "Pareja abrazada en noche de fiesta",
+      },
+    ],
+  },
 ];
 
 const dressCodeGallery = [
@@ -926,7 +913,7 @@ export function Invitation() {
           <p className="kicker">Lazos en forma de</p>
           <h2>Obsequios</h2>
           <p className="lead">
-            Tu presencia es nuestro mejor regalo. Si deseas tener un detalle adicional con nosotros para nuestro nuevo hogar / luna de miel, contaremos con una lluvia de sobres en la recepción.
+            Tu presencia es nuestro mejor regalo. Si deseas tener un detalle adicional con nosotros para nuestro nuevo hogar / luna de miel, será bien recibido.
           </p>
           <div className="gift-card">
             <h3>Lluvia de sobres</h3>
