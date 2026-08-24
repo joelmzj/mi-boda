@@ -12,9 +12,9 @@ function App() {
 
   const handleEnvelopeOpen = () => {
     setEnvelopeOpened(true);
-    // Si la música no está sonando, aprovechamos la interacción del usuario con el sobre para activarla
-    if (!music.playing && typeof music.toggle === "function") {
-      music.toggle();
+    // Forzamos la reproducción inmediata aprovechando el gesto táctil del sobre en móviles
+    if (typeof music.forcePlay === "function") {
+      music.forcePlay();
     }
   };
 

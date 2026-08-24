@@ -14,8 +14,6 @@ export function useBackgroundMusic(src) {
   const [unavailable, setUnavailable] = useState(false);
   const wasPlayingBeforeHidden = useRef(false);
 
-  // The audio element's "play"/"pause" events are the single source of truth
-  // for `playing`, so this function never calls setState directly.
   const attemptPlay = useCallback(async () => {
     const audio = audioRef.current;
     if (!audio || !enabled || unavailable) return;
@@ -27,13 +25,28 @@ export function useBackgroundMusic(src) {
     }
   }, [enabled, unavailable]);
 
+  // Método robusto para forzar reproducción inmediata desde gestos táctiles en móviles
+  const forcePlay = useCallback(async () => {
+    const audio = audioRef.current;
+    if (!audio || unavailable) return;
+    
+    setEnabled(true);
+    localStorage.setItem(preferenceKey, "true");
+
+    try {
+      audio.muted = false;
+      await audio.play();
+    } catch (err) {
+      console.error("Error al forzar reproducción de audio en móvil:", err);
+    }
+  }, [unavailable]);
+
   useEffect(() => {
     const audio = new Audio(src);
     audio.loop = true;
     audio.volume = defaultVolume;
-    // Don't compete with the intro video/hero assets for bandwidth: the
-    // browser won't fetch audio bytes until play() is actually called.
-    audio.preload = "none";
+    // Cambiamos a "auto" para asegurar precarga óptima en móviles
+    audio.preload = "auto";
     audioRef.current = audio;
 
     const markPlaying = () => setPlaying(true);
@@ -60,8 +73,6 @@ export function useBackgroundMusic(src) {
     localStorage.setItem(preferenceKey, String(enabled));
 
     if (!enabled) {
-      // Pausing fires the "pause" event, whose listener updates `playing`,
-      // so we avoid calling setState synchronously inside the effect body.
       audioRef.current?.pause();
       return undefined;
     }
@@ -111,5 +122,5 @@ export function useBackgroundMusic(src) {
     setEnabled((current) => !current);
   }, []);
 
-  return { enabled, playing, unavailable, toggle };
+  return { enabled, playing, unavailable, toggle, forcePlay };
 }

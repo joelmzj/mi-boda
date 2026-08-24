@@ -1096,8 +1096,8 @@ export function Invitation() {
           <h2>Vestimenta</h2>
 
           <p className="lead">
-            Los invitamos a vestir con un atuendo elegante y cómodo para un entorno natural, eligiendo
-            tonos pastel o suaves. Les agradecemos reservar el blanco y sus tonalidades para la novia.
+            Los invitamos a vestir con un atuendo elegante y cómodo compatible con el otoño, eligiendo
+            entres los tonos a continuación sugeridos. Les agradecemos reservar el blanco y sus tonalidades para la novia.
           </p>
           <br />
           <p className="gallery-hint">
