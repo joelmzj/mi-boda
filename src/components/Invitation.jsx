@@ -34,115 +34,6 @@ const base = import.meta.env.BASE_URL;
 const heroWedding = `${base}media/site/hero-wedding.webp`;
 const weddingLogo = `${base}img/wedding-logo.webp`;
 
-// ==========================================
-// Componente Canvas de Estrellas Vectoriales (Path2D)
-// ==========================================
-function StarfieldCanvas() {
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas || !canvas.parentElement) return;
-    const ctx = canvas.getContext("2d");
-
-    const updateBounds = () => {
-      const parent = canvas.parentElement;
-      if (!parent) return;
-      const rect = parent.getBoundingClientRect();
-      canvas.width = rect.width;
-      canvas.height = rect.height;
-    };
-
-    updateBounds();
-
-    const resizeObserver = new ResizeObserver(() => {
-      updateBounds();
-    });
-    resizeObserver.observe(canvas.parentElement);
-
-    const pathClassic = new Path2D(
-      "M 0,-12 Q 0,0 12,0 Q 0,0 0,12 Q 0,0 -12,0 Q 0,0 0,-12 Z"
-    );
-    const pathSlimCross = new Path2D(
-      "M 0,-16 Q 0,0 4,0 Q 0,0 0,16 Q 0,0 -4,0 Q 0,0 0,-16 Z"
-    );
-    const pathRadiant8 = new Path2D(
-      "M 0,-10 Q 0,0 10,0 Q 0,0 0,10 Q 0,0 -10,0 Q 0,0 0,-10 Z " +
-        "M -4,-4 Q 0,0 4,-4 Q 0,0 4,4 Q 0,0 -4,4 Q 0,0 -4,-4 Z"
-    );
-
-    const starTypes = [pathClassic, pathSlimCross, pathRadiant8];
-
-    const stars = Array.from({ length: 40 }).map(() => ({
-      x: Math.random() * (canvas.width || 300),
-      y: Math.random() * (canvas.height || 600),
-      size: Math.random() * 0.8 + 0.4,
-      phase: Math.random() * Math.PI * 2,
-      speed: Math.random() * 0.008 + 0.003,
-      maxOpacity: Math.random() * 0.6 + 0.35,
-      color: Math.random() > 0.4 ? "#f2e8d4" : "#e0ecf8",
-      typeIndex: Math.floor(Math.random() * 3),
-      rotation: Math.random() * Math.PI,
-    }));
-
-    let animationFrameId;
-
-    const render = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      stars.forEach((star) => {
-        star.phase += star.speed;
-
-        const currentOpacity =
-          ((Math.sin(star.phase) + 1) / 2) * star.maxOpacity;
-
-        if (currentOpacity < 0.01 && Math.random() < 0.1) {
-          star.x = Math.random() * canvas.width;
-          star.y = Math.random() * canvas.height;
-          star.typeIndex = Math.floor(Math.random() * 3);
-          star.rotation = Math.random() * Math.PI;
-        }
-
-        ctx.save();
-        ctx.translate(star.x, star.y);
-        ctx.rotate(star.rotation);
-        ctx.scale(star.size, star.size);
-
-        ctx.fillStyle = star.color;
-        ctx.globalAlpha = Math.max(0, currentOpacity);
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = star.color;
-
-        ctx.fill(starTypes[star.typeIndex]);
-        ctx.restore();
-      });
-
-      animationFrameId = requestAnimationFrame(render);
-    };
-
-    render();
-
-    return () => {
-      resizeObserver.disconnect();
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
-
-  return (
-    <canvas
-      ref={canvasRef}
-      style={{
-        position: "absolute",
-        inset: 0,
-        width: "100%",
-        height: "100%",
-        pointerEvents: "none",
-        zIndex: 10,
-      }}
-    />
-  );
-}
-
 const weddingDate = new Date("2026-11-21T16:00:00-06:00");
 
 const eventDetails = {
@@ -245,7 +136,7 @@ const couplePosts = [
         src: `${base}media/couple/couple-1.2.webp`,
         alt: "Pareja abrazada mostrando anillo de compromiso",
       },
-            {
+      {
         id: 3,
         type: "image",
         src: `${base}media/couple/couple-1.3.webp`,
@@ -276,7 +167,7 @@ const couplePosts = [
         src: `${base}media/couple/couple-2.3.webp`,
         alt: "Selfie de cerca con luces al fondo",
       },
-            {
+      {
         id: 7,
         type: "image",
         src: `${base}media/couple/couple-2.4.webp`,
@@ -418,30 +309,8 @@ export function Invitation() {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [showHint, setShowHint] = useState(false);
 
-  // Ref y Estado para la animación por scroll de la Sección Poética
-  const poetryRef = useRef(null);
-  const [isPoetryVisible, setIsPoetryVisible] = useState(false);
-
-  useEffect(() => {
-    const el = poetryRef.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsPoetryVisible(true);
-        }
-      },
-      {
-        threshold: 0.05,
-        rootMargin: "0px 0px -40px 0px",
-      }
-    );
-
-    observer.observe(el);
-
-    return () => observer.disconnect();
-  }, []);
+  // Estado para el Modal del Poema Easter Egg ('moon' | 'sun' | null)
+  const [activePoetryModal, setActivePoetryModal] = useState(null);
 
   const openPostModal = (post) => {
     setSelectedPost(post);
@@ -458,9 +327,15 @@ export function Invitation() {
     document.body.style.overflow = "hidden";
   };
 
+  const openPoetryModal = (type) => {
+    setActivePoetryModal(type);
+    document.body.style.overflow = "hidden";
+  };
+
   const closeModal = () => {
     setSelectedPost(null);
     setSelectedDressImage(null);
+    setActivePoetryModal(null);
     setIsFullScreen(false);
     document.body.style.overflow = "";
   };
@@ -533,7 +408,7 @@ export function Invitation() {
           setShowCalendarMenu(false);
         } else if (isFullScreen) {
           setIsFullScreen(false);
-        } else if (selectedPost || selectedDressImage) {
+        } else if (selectedPost || selectedDressImage || activePoetryModal) {
           closeModal();
         }
       }
@@ -541,7 +416,7 @@ export function Invitation() {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedPost, selectedDressImage, isFullScreen, showCalendarMenu]);
+  }, [selectedPost, selectedDressImage, activePoetryModal, isFullScreen, showCalendarMenu]);
 
   useEffect(() => {
     if (selectedPost || selectedDressImage) {
@@ -825,9 +700,7 @@ export function Invitation() {
           </div>
         </section>
 
-        {/* ==========================================
-            Sección de Padres y Padrinos
-           ========================================== */}
+        {/* Sección de Padres y Padrinos */}
         <section className="schedule-section light-paper-section" id="familia-padrinos">
           <p className="kicker">Con la bendición de Dios y</p>
           <h2>Nuestras Familias</h2>
@@ -1239,42 +1112,146 @@ export function Invitation() {
         </section>
 
         {/* ==========================================
-            Sección Celestial Poética (Movida Arriba del Footer)
+            Sección Interactiva: La Luna y el Sol (Easter Egg) en Paralelo
            ========================================== */}
-        <section
-          ref={poetryRef}
-          className={`poetry-celestial-section ${isPoetryVisible ? "is-visible" : ""}`}
-          id="poesia"
-        >
-          {/* Canvas de estrellas con movimiento orgánico e impredecible */}
-          <StarfieldCanvas />
-
-          <div className="poetry-intro-portal">
+        <section className="rsvp-section" id="poesia" style={{ padding: "80px 24px" }}>
+          <div className="rsvp-intro" style={{ marginBottom: "30px" }}>
             <p className="kicker light">Nuestra historia en versos</p>
             <h2>La Luna y el Sol</h2>
-            <div className="poetry-divider-ornament">✦ ─────────────────── ✦</div>
-            <p className="poetry-portal-quote">
-              “La Palabra que crea creó nuestro amor...”
+            <p className="lead" style={{ color: "#f2e8d4", paddingTop: "8px", maxWidth: "600px" }}>
+              “La Palabra que crea creó nuestro amor...” Toca cada símbolo para descubrir los versos escritos en el camino.
             </p>
           </div>
 
-          <div className="poetry-grid">
-            {/* Tarjeta Luna */}
-            <article className="poetry-card moon-card">
-              <div className="poetry-image-wrapper">
+          <div style={{ display: "flex", gap: "16px", justifyContent: "center", maxWidth: "560px", margin: "0 auto" }}>
+            {/* Botón / Tarjeta Luna */}
+            <div 
+              onClick={() => openPoetryModal('moon')}
+              style={{ 
+                flex: 1, 
+                cursor: "pointer", 
+                textAlign: "center", 
+                padding: "20px 16px", 
+                background: "rgba(18, 24, 21, 0.82)", 
+                borderRadius: "14px", 
+                border: "1px solid rgba(212, 225, 235, 0.4)", 
+                boxShadow: "0 8px 24px rgba(0,0,0,0.3)",
+                transition: "transform 0.25s ease, border-color 0.25s ease"
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-4px)"}
+              onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0)"}
+            >
+              <img
+                src={`${base}media/site/Luna.png`}
+                alt="La Luna - Menguante"
+                style={{ width: "70px", height: "70px", objectFit: "contain", margin: "0 auto 12px", display: "block" }}
+              />
+              <span style={{ display: "block", fontSize: "10px", textTransform: "uppercase", letterSpacing: "1.5px", color: "#dfc286", fontWeight: 600 }}>La Luna</span>
+              <h3 style={{ fontSize: "20px", margin: "4px 0 0", color: "#f2e8d4", fontFamily: "Cormorant Garamond, serif" }}>Menguante</h3>
+            </div>
+
+            {/* Botón / Tarjeta Sol */}
+            <div 
+              onClick={() => openPoetryModal('sun')}
+              style={{ 
+                flex: 1, 
+                cursor: "pointer", 
+                textAlign: "center", 
+                padding: "20px 16px", 
+                background: "rgba(18, 24, 21, 0.82)", 
+                borderRadius: "14px", 
+                border: "1px solid rgba(223, 194, 134, 0.45)", 
+                boxShadow: "0 8px 24px rgba(0,0,0,0.3)",
+                transition: "transform 0.25s ease, border-color 0.25s ease"
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-4px)"}
+              onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0)"}
+            >
+              <img
+                src={`${base}media/site/Sol.png`}
+                alt="El Sol - Fronterizo"
+                style={{ width: "70px", height: "70px", objectFit: "contain", margin: "0 auto 12px", display: "block" }}
+              />
+              <span style={{ display: "block", fontSize: "10px", textTransform: "uppercase", letterSpacing: "1.5px", color: "#dfc286", fontWeight: 600 }}>El Sol</span>
+              <h3 style={{ fontSize: "20px", margin: "4px 0 0", color: "#f2e8d4", fontFamily: "Cormorant Garamond, serif" }}>Fronterizo</h3>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      {/* Footer con Firma y Dedicatoria Personal */}
+      <footer>
+        <div className="ornament">
+          <img
+            src={`${base}media/site/rings-ornament.webp`}
+            width={88}
+            height="auto"
+            loading="lazy"
+            alt=""
+          />
+        </div>
+        <p className="signature">Nuestra Boda</p>
+        <span>21 · 11 · 2026</span>
+        <p className="footer-dedication">Hecho por Joel para Itsa con ❤️</p>
+      </footer>
+
+      {/* Modal Poético (Easter Egg) */}
+      {activePoetryModal && (
+        <div className="image-modal-overlay" onClick={closeModal}>
+          <div
+            className="instagram-card"
+            onClick={(e) => e.stopPropagation()}
+            style={{ 
+              background: "#121815", 
+              color: "#ffffff", 
+              maxWidth: "600px", 
+              maxHeight: "85vh", 
+              border: "1px solid rgba(223, 194, 134, 0.4)",
+              overflowY: "auto"
+            }}
+          >
+            <div className="instagram-header" style={{ background: "#17241f", borderBottom: "1px solid rgba(223, 194, 134, 0.2)" }}>
+              <div className="instagram-user">
+                <div className="instagram-avatar">I & J</div>
+                <div className="instagram-user-info">
+                  <span className="username" style={{ color: "#f2e8d4" }}>
+                    {activePoetryModal === 'moon' ? 'La Luna · Menguante' : 'El Sol · Fronterizo'}
+                  </span>
+                  <span className="location">Versos de amor</span>
+                </div>
+              </div>
+              <button
+                className="instagram-close-button"
+                onClick={closeModal}
+                aria-label="Cerrar"
+                style={{ color: "#f2e8d4" }}
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+
+            <div style={{ padding: "32px 24px", textAlign: "center" }}>
+              <div style={{ width: "130px", margin: "0 auto 20px" }}>
                 <img
-                  src={`${base}media/site/Luna.png`}
-                  alt="Ilustración de la Luna"
-                  className="poetry-illustration"
+                  src={`${base}media/site/${activePoetryModal === 'moon' ? 'Luna.png' : 'Sol.png'}`}
+                  alt=""
+                  style={{ width: "100%", height: "auto", objectFit: "contain" }}
                 />
               </div>
 
-              <div className="poetry-content">
-                <span className="poetry-tag">La Luna</span>
-                <h3 className="poetry-title">Menguante</h3>
-                <span className="poetry-dedication">— Para Itsa —</span>
+              <span style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", color: "#dfc286", display: "block", marginBottom: "6px" }}>
+                {activePoetryModal === 'moon' ? 'La Luna' : 'El Sol'}
+              </span>
+              <h3 style={{ fontSize: "28px", color: "#f2e8d4", fontFamily: "Cormorant Garamond, serif", margin: "0 0 4px" }}>
+                {activePoetryModal === 'moon' ? 'Menguante' : 'Fronterizo'}
+              </h3>
+              <span style={{ display: "block", fontSize: "14px", textTransform: "uppercase", letterSpacing: "2.5px", color: "#dfc286", margin: "0 0 24px" }}>
+                — Para Itsa —
+              </span>
 
-                <div className="poetry-text">
+              <div style={{ fontfamily: "Cormorant Garamond, Georgia, serif", fontSize: "18px", fontStyle: "italic", lineHeight: "1.6", color: "#f7f3eb", textAlign: "center", marginBottom: "30px" }}>
+                {activePoetryModal === 'moon' ? (
                   <p>
                     Vive en mí<br />
                     como mi sangre,<br />
@@ -1324,31 +1301,7 @@ export function Invitation() {
                     Lejos de ti<br />
                     no hay nada.
                   </p>
-                </div>
-
-                <div className="poetry-footer">
-                  <span className="poetry-author">Joel M. J.</span>
-                  <span className="poetry-date">7 de abril de 2026</span>
-                </div>
-              </div>
-            </article>
-
-            {/* Tarjeta Sol */}
-            <article className="poetry-card sun-card">
-              <div className="poetry-image-wrapper">
-                <img
-                  src={`${base}media/site/Sol.png`}
-                  alt="Ilustración del Sol"
-                  className="poetry-illustration"
-                />
-              </div>
-
-              <div className="poetry-content">
-                <span className="poetry-tag">El Sol</span>
-                <h3 className="poetry-title">Fronterizo</h3>
-                <span className="poetry-dedication">— Para Itsa —</span>
-
-                <div className="poetry-text">
+                ) : (
                   <p>
                     El límite es la mirada,<br />
                     pero más allá hay verdor<br />
@@ -1377,34 +1330,19 @@ export function Invitation() {
                     me invita a que la siga hacia su estancia<br />
                     y me envuelve de amor entre tus besos.
                   </p>
-                </div>
-
-                <div className="poetry-footer">
-                  <span className="poetry-author">Joel M. J.</span>
-                  <span className="poetry-date">8 de diciembre de 2025</span>
-                </div>
+                )}
               </div>
-            </article>
+
+              <div style={{ borderTop: "1px solid rgba(223, 194, 134, 0.2)", paddingTop: "16px", display: "flex", flexDirection: "column", gap: "4px" }}>
+                <span style={{ fontSize: "13px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "2px", color: "#dfc286" }}>Joel M. J.</span>
+                <span style={{ fontSize: "12px", fontStyle: "italic", color: "#f7f3eb", opacity: 0.65 }}>
+                  {activePoetryModal === 'moon' ? '7 de abril de 2026' : '8 de diciembre de 2025'}
+                </span>
+              </div>
+            </div>
           </div>
-        </section>
-
-      </main>
-
-      {/* Footer con Firma y Dedicatoria Personal */}
-      <footer>
-        <div className="ornament">
-          <img
-            src={`${base}media/site/rings-ornament.webp`}
-            width={88}
-            height="auto"
-            loading="lazy"
-            alt=""
-          />
         </div>
-        <p className="signature">Nuestra Boda</p>
-        <span>21 · 11 · 2026</span>
-        <p className="footer-dedication">Hecho por Joel para Itsa con ❤️</p>
-      </footer>
+      )}
 
       {/* Modal Instagram con Contador de Diapositivas (1/X) */}
       {(selectedPost || selectedDressImage) && (
