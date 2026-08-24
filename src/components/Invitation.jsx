@@ -915,7 +915,10 @@ export function Invitation() {
           style={{ backgroundImage: `url(${base}media/site/reception.webp)` }}
         >
           <div>
-            <p>“De la suerte de encontrarnos a la fortuna de tenernos.”</p>
+            <p>“Te quiero porque eres mi destino, mi camino y mi casa.”</p>
+            <span style={{ display: "block", textAlign: "right", marginTop: "12px", fontSize: "11px", letterSpacing: "2px", textTransform: "uppercase", color: "#ead8ad" }}>
+              — Jaime Sabines
+            </span>
           </div>
         </section>
 
@@ -924,12 +927,11 @@ export function Invitation() {
           <p className="kicker">Lazos en forma de</p>
           <h2>Obsequios</h2>
           <p className="lead">
-            Tu presencia es lo más importante para nosotros. Si además deseas
-            tener un detalle, hemos preparado una opción sencilla.
+            Tu presencia es nuestro mejor regalo. Si deseas tener un detalle adicional con nosotros para nuestro nuevo hogar / luna de miel, contaremos con una lluvia de sobres en la recepción.
           </p>
           <div className="gift-card">
             <h3>Lluvia de sobres</h3>
-            <p>Encontrarás un espacio especial durante la celebración.</p>
+            <p>Si lo requieres, contaremos con sobres disponibles en la recepción para que puedas colocar tu aportación y buenos deseos.</p>
           </div>
         </section>
 
@@ -940,7 +942,7 @@ export function Invitation() {
             <h2>Muro de deseos</h2>
             <p className="lead" style={{ color: "#f2e8d4", paddingTop: "8px" }}>
               Cada paso hasta aquí ha sido más bonito gracias a ustedes. Déjanos un mensaje 
-              o dedica una canción para celebrar juntos en la pista de baile.
+              o dedica una canción para celebrar nuestro amor.
             </p>
           </div>
 
