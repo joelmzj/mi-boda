@@ -102,7 +102,7 @@ const venueEvents = [
     id: 2,
     time: "5:00 pm",
     title: "Recepción",
-    text: "Bienvenida y coctel para todos nuestros invitados.",
+    text: "Llegada de los invitados y preparación para la boda civil.",
   },
   {
     id: 3,
@@ -229,7 +229,7 @@ const couplePosts = [
 
 const dressCodeGallery = [
   {
-    id: 2,
+    id: 1,
     src: `${base}media/dress-code/dress-2.webp`,
     alt: "Referencia de vestimenta femenina 1",
   }
@@ -882,12 +882,12 @@ export function Invitation() {
           <h2>Vestimenta</h2>
 
           <p className="lead">
-            Los invitamos a vestir con un atuendo elegante y cómodo compatible con el otoño, eligiendo
-            entre los tonos a continuación sugeridos. Les agradecemos reservar el blanco y sus tonalidades para la novia.
+            Los invitamos a vestir con un atuendo elegante y cómodo, así como con tonalidades compatibles con el otoño.
+            Les agradecemos reservar el blanco y sus tonalidades para la novia.
           </p>
           <br />
           <p className="gallery-hint">
-            (Toca cualquier imagen para ver la referencia ampliada)
+            (Toca la imagen para verla ampliada)
           </p>
 
           <div className="dress-code-grid-container">
