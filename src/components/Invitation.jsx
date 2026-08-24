@@ -574,7 +574,7 @@ export function Invitation() {
           <h2>¡Nos casamos!</h2>
 
           <p className="lead">
-            Queremos celebrar uno de los mopmentos más bonitos de nuestras vidas junto a las personas que hacen especial nuestra historia.
+            Queremos celebrar uno de los momentos más bonitos de nuestras vidas junto a las personas que hacen especial nuestra historia.
           </p>
           <br />
           <p className="gallery-hint">
