@@ -825,6 +825,53 @@ export function Invitation() {
           </div>
         </section>
 
+        {/* ==========================================
+            Sección de Padres y Padrinos
+           ========================================== */}
+        <section className="schedule-section light-paper-section" id="familia-padrinos">
+          <p className="kicker">Con la bendición de Dios y</p>
+          <h2>Nuestras Familias</h2>
+          
+          <p className="lead" style={{ textAlign: "center", marginBottom: "30px" }}>
+            Agradecemos el amor, el ejemplo y el apoyo incondicional de quienes nos han guiado hasta este momento.
+          </p>
+
+          <div className="scenarios-container">
+            {/* Padres de la Novia */}
+            <article className="scenario-card" style={{ textAlign: "center" }}>
+              <header className="scenario-header">
+                <span className="scenario-badge">💐 Padres de la novia</span>
+              </header>
+              <div className="scenario-timeline" style={{ display: "block", padding: "10px 0" }}>
+                <p style={{ margin: "8px 0", fontSize: "1.05rem" }}><b>María Dolores Padrón Astorga</b></p>
+                <p style={{ margin: "8px 0", fontSize: "1.05rem" }}><b>Isaías Juárez Samperio</b></p>
+              </div>
+            </article>
+
+            {/* Padres del Novio */}
+            <article className="scenario-card" style={{ textAlign: "center" }}>
+              <header className="scenario-header">
+                <span className="scenario-badge">🕊️ Padres del novio</span>
+              </header>
+              <div className="scenario-timeline" style={{ display: "block", padding: "10px 0" }}>
+                <p style={{ margin: "8px 0", fontSize: "1.05rem" }}><b>Luz María Justo Xochipa</b></p>
+                <p style={{ margin: "8px 0", fontSize: "1.05rem" }}>
+                  <b>Joel Méndez Alonso</b> <span style={{ fontSize: "0.9rem", color: "#666" }}>(✟)</span>
+                </p>
+              </div>
+            </article>
+          </div>
+
+          {/* Padrinos de Velación */}
+          <div style={{ marginTop: "30px", textAlign: "center" }} className="scenario-card">
+            <header className="scenario-header" style={{ marginBottom: "10px" }}>
+              <span className="scenario-badge">✨ Padrinos de velación</span>
+            </header>
+            <p style={{ margin: "6px 0", fontSize: "1.05rem" }}><b>Ana Karen Astorga Pinto</b></p>
+            <p style={{ margin: "6px 0", fontSize: "1.05rem" }}><b>Emmanuel Morales Álvarez</b></p>
+          </div>
+        </section>
+
         {/* Itinerario */}
         <section className="schedule-section light-paper-section" id="itinerario">
           <p className="kicker">No te pierdas nada</p>
