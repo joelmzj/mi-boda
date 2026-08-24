@@ -574,8 +574,7 @@ export function Invitation() {
           <h2>¡Nos casamos!</h2>
 
           <p className="lead">
-            Después de compartir tantos caminos, queremos celebrar el más bonito
-            de todos junto a las personas que hacen especial nuestra historia.
+            Queremos celebrar uno de los mopmentos más bonitos de nuestras vidas junto a las personas que hacen especial nuestra historia.
           </p>
           <br />
           <p className="gallery-hint">
@@ -915,7 +914,7 @@ export function Invitation() {
           style={{ backgroundImage: `url(${base}media/site/reception.webp)` }}
         >
           <div>
-            <p>“Te quiero porque eres mi destino, mi camino y mi casa.”</p>
+            <p>“Te quiero porque eres mi destino, mi camino y mi casa...”</p>
             <span style={{ display: "block", textAlign: "right", marginTop: "12px", fontSize: "11px", letterSpacing: "2px", textTransform: "uppercase", color: "#ead8ad" }}>
               — Jaime Sabines
             </span>
