@@ -229,25 +229,10 @@ const couplePosts = [
 
 const dressCodeGallery = [
   {
-    id: 1,
-    src: `${base}media/dress-code/dress-1.webp`,
-    alt: "Referencia de vestimenta masculina 1",
-  },
-  {
     id: 2,
     src: `${base}media/dress-code/dress-2.webp`,
     alt: "Referencia de vestimenta femenina 1",
-  },
-  {
-    id: 3,
-    src: `${base}media/dress-code/dress-3.webp`,
-    alt: "Referencia de vestimenta masculina 2",
-  },
-  {
-    id: 4,
-    src: `${base}media/dress-code/dress-4.webp`,
-    alt: "Referencia de vestimenta femenina 2",
-  },
+  }
 ];
 
 const contactMessage =
