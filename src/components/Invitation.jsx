@@ -102,19 +102,19 @@ const venueEvents = [
     id: 2,
     time: "5:00 pm",
     title: "Recepción",
-    text: "Llegada de los invitados y preparación para la boda civil.",
+    text: "Llegada de los invitados.",
   },
   {
     id: 3,
-    time: "5:30 pm",
-    title: "Boda civil",
-    text: "Ceremonia legal e intercambio de votos.",
+    time: "5:15 pm",
+    title: "Banquete",
+    text: "Comida.",
   },
   {
     id: 4,
-    time: "6:00 pm",
-    title: "Banquete",
-    text: "Cena, brindis y fiesta para celebrar juntos.",
+    time: "6:30 pm",
+    title: "",
+    text: "Brindis y fiesta para celebrar juntos.",
   },
 ];
 
