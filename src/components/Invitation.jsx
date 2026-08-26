@@ -113,7 +113,7 @@ const venueEvents = [
   {
     id: 4,
     time: "6:30 pm",
-    title: "",
+    title: "Fiesta",
     text: "Brindis y fiesta para celebrar juntos.",
   },
 ];
