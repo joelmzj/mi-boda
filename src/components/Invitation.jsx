@@ -686,8 +686,8 @@ export function Invitation() {
                 <span className="scenario-badge">💐 Padres de la novia</span>
               </header>
               <div className="scenario-timeline" style={{ display: "block", padding: "10px 0" }}>
-                <p style={{ margin: "8px 0", fontSize: "1.05rem" }}><b>María Dolores Padrón Astorga</b></p>
                 <p style={{ margin: "8px 0", fontSize: "1.05rem" }}><b>Isaías Juárez Samperio</b></p>
+                <p style={{ margin: "8px 0", fontSize: "1.05rem" }}><b>María Dolores Padrón Astorga</b></p>
               </div>
             </article>
 
@@ -697,10 +697,10 @@ export function Invitation() {
                 <span className="scenario-badge">🕊️ Padres del novio</span>
               </header>
               <div className="scenario-timeline" style={{ display: "block", padding: "10px 0" }}>
-                <p style={{ margin: "8px 0", fontSize: "1.05rem" }}><b>Luz María Justo Xochipa</b></p>
                 <p style={{ margin: "8px 0", fontSize: "1.05rem" }}>
                   <b>Joel Méndez Alonso</b> <span style={{ fontSize: "0.9rem", color: "#666" }}>(✟)</span>
                 </p>
+                <p style={{ margin: "8px 0", fontSize: "1.05rem" }}><b>Luz María Justo Xochipa</b></p>
               </div>
             </article>
           </div>
@@ -710,8 +710,8 @@ export function Invitation() {
             <header className="scenario-header" style={{ marginBottom: "10px" }}>
               <span className="scenario-badge">✨ Padrinos de velación</span>
             </header>
-            <p style={{ margin: "6px 0", fontSize: "1.05rem" }}><b>Ana Karen Astorga Pinto</b></p>
             <p style={{ margin: "6px 0", fontSize: "1.05rem" }}><b>Emmanuel Morales Álvarez</b></p>
+            <p style={{ margin: "6px 0", fontSize: "1.05rem" }}><b>Ana Karen Astorga Pinto</b></p>
           </div>
         </section>
 
